@@ -1,0 +1,167 @@
+#Violin Plots R Script
+library(ggplot2)
+library(plyr)
+library(rstatix)
+library(dplyr)
+library(lme4)
+library(nlme)
+
+
+
+setwd("C:/Users/Jacobs Laboratory/Documents/JCYang/SLC PD Behavior/")
+data_box_plot<- read.csv("PFF Rotarod  - PFF_Rotarod_Analysis.csv",header=T)
+data_box_plot$Day <- factor(data_box_plot$Day, levels=c("one", "two ", "three"))
+data_box_plot$Genotype <- factor(data_box_plot$Genotype, levels=c("WT", "HET", "MUT"))
+
+mytheme <- theme(panel.grid.minor=element_blank(), #gets rid of grey and lines in the middle
+                 panel.grid.major=element_blank(), #gets rid of grey and lines in the middle
+                 panel.background=element_rect(fill="white"),#gets rid of grey and lines in the middle
+                 panel.border=element_blank(), #gets rid of square going around the entire graph
+                 axis.line.x = element_line(colour = 'black', size = 1),#sets the axis line size
+                 axis.line.y = element_line(colour = 'black', size = 1),#sets the axis line size
+                 axis.ticks=element_line(colour = 'black', size = 0.5), #sets the tick lines
+                 axis.title.x = element_text(size=14, color="black"), #size of x-axis title
+                 axis.title.y = element_text(size=14, color="black"), #size of y-axis title
+                 axis.text.x = element_text(size=14, color="black"), #size of x-axis text
+                 axis.text.y = element_text(size=14, color="black"))#size of y-axis text
+#####Stratified by sex 
+newdata <- subset(data_box_plot, Sex=="M")
+violin<-ggplot(data=newdata,aes(x=Day,y=Average_Latency, fill=Day))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(aes(group=Mouse.ID,color=Genotype),size=2,position=position_jitter(width=0.25),alpha=1)+
+  geom_line(aes(group = Mouse.ID,color=Genotype),size=1)+
+  mytheme
+violin
+violin<-ggplot(data=newdata,aes(x=Genotype,y=Average_Latency, fill=Genotype))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(size=2,position=position_jitter(width=0.25),alpha=1, color="black")+
+  mytheme + ylim(30,180)
+violin
+output=lm(Average_Latency ~ Day + Genotype, data=newdata)
+summary(output)
+output=lm(Average_Latency ~ Day*Genotype, data=newdata)
+summary(output)
+
+newdata <- subset(data_box_plot, Sex=="F")
+violin<-ggplot(data=newdata,aes(x=Day,y=Average_Latency, fill=Day))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(aes(group=Mouse.ID,color=Genotype),size=2,position=position_jitter(width=0.25),alpha=1)+
+  geom_line(aes(group = Mouse.ID,color=Genotype),size=1)+
+  mytheme
+violin
+violin<-ggplot(data=newdata,aes(x=Genotype,y=Average_Latency, fill=Genotype))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(size=2,position=position_jitter(width=0.25),alpha=1, color="black")+
+  mytheme + ylim(30,180)
+violin
+output=lm(Average_Latency ~ Day + Genotype, data=newdata)
+summary(output)
+output=lm(Average_Latency ~ Day*Genotype, data=newdata)
+summary(output)
+
+#####Stratified by day 
+newdata <- subset(data_box_plot, Day=="one")
+violin<-ggplot(data=newdata,aes(x=Genotype,y=Average_Latency, fill=Genotype))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(size=2,position=position_jitter(width=0.25),alpha=1, color="black")+
+  mytheme + ylim(30,180)
+violin
+output=lm(Average_Latency ~ Sex + Genotype, data=newdata)
+summary(output)
+output=lm(Average_Latency ~ Sex*Genotype, data=newdata)
+summary(output)
+
+newdata <- subset(data_box_plot, Day=="two ")
+violin<-ggplot(data=newdata,aes(x=Genotype,y=Average_Latency, fill=Genotype))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(size=2,position=position_jitter(width=0.25),alpha=1, color="black")+
+  mytheme + ylim(30,180)
+  violin
+output=lm(Average_Latency ~ Sex + Genotype, data=newdata)
+summary(output)
+output=lm(Average_Latency ~ Sex*Genotype, data=newdata)
+summary(output)
+  
+newdata <- subset(data_box_plot, Day=="three")
+violin<-ggplot(data=newdata,aes(x=Genotype,y=Average_Latency, fill=Genotype))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(size=2,position=position_jitter(width=0.25),alpha=1, color="black")+
+  mytheme + ylim(30,180)
+  violin
+output=lm(Average_Latency ~ Sex + Genotype, data=newdata)
+summary(output) 
+output=lm(Average_Latency ~ Sex*Genotype, data=newdata)
+summary(output)
+
+#####Stratified by day and Sex - 180 DPI
+newdata <- subset(data_box_plot, Day=="three" & Sex =="M")
+violin<-ggplot(data=newdata,aes(x=Genotype,y=Average_Latency, fill=Genotype))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(size=2,position=position_jitter(width=0.25),alpha=1, color="black")+
+  mytheme + ylim(30,180)
+violin
+output=lm(Average_Latency ~ Genotype, data=newdata)
+summary(output) 
+
+newdata <- subset(data_box_plot, Day=="three" & Sex =="F")
+violin<-ggplot(data=newdata,aes(x=Genotype,y=Average_Latency, fill=Genotype))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(size=2,position=position_jitter(width=0.25),alpha=1, color="black")+
+  mytheme + ylim(30,180)
+violin
+output=lm(Average_Latency ~ Genotype, data=newdata)
+summary(output) 
+
+####Evaluating motor learning for whole dataset
+
+output=lm(Average_Latency ~ Sex + Genotype, data=newdata)
+summary(output)
+
+violin<-ggplot(data=data_box_plot,aes(x=Day,y=Average_Latency, fill=Day))+
+  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+  geom_point(aes(group=Mouse.ID,color=Genotype),size=2,position=position_jitter(width=0.25),alpha=1)+
+  geom_line(aes(group = Mouse.ID,color=Genotype),size=1)+
+  mytheme
+violin
+
+output=lme(fixed= Average_Latency ~ Sex, random = ~1 |Mouse.ID, data=data_box_plot)
+summary(output)
+
+data_box_plot$SLC<- factor(data_box_plot$SLC)
+data_box_plot<- read.csv("Wire-Hang Test Results 7.16.21  - 90 DPI analysis-omittingoutliers.csv",header=T)
+
+mytheme <- theme(panel.grid.minor=element_blank(), #gets rid of grey and lines in the middle
+                 panel.grid.major=element_blank(), #gets rid of grey and lines in the middle
+                 panel.background=element_rect(fill="white"),#gets rid of grey and lines in the middle
+                 panel.border=element_blank(), #gets rid of square going around the entire graph
+                 axis.line.x = element_line(colour = 'black', size = 1),#sets the axis line size
+                 axis.line.y = element_line(colour = 'black', size = 1),#sets the axis line size
+                 axis.ticks=element_line(colour = 'black', size = 0.5), #sets the tick lines
+                   axis.title.x = element_text(size=12, color="black"), #size of x-axis title
+                 axis.title.y = element_text(size=12, color="black"), #size of y-axis title
+                 axis.text.x = element_text(size=12, color="black"), #size of x-axis text
+                 axis.text.y = element_text(size=12, color="black"))#size of y-axis text
+sapply(data_box_plot,levels)
+data_box_plot$Q22.Genotype
+data_box_plot$Day <- factor(data_box_plot$Day, levels=c("Training", "NOR"))
+data_box_plot$Day_Treatment <- factor(data_box_plot$Day_Treatment, levels=c("Training_Saline", "NOR_Saline", "Training_MPTP","NOR_MPTP"))
+data_box_plot$MouseNumber<- factor(data_box_plot$MouseNumber)
+sapply(data_box_plot,levels)
+
+
+sapply(data,levels)
+data_box_plot$Genotype <- factor(data_box_plot$Genotype, levels=c("WT", "HET", "MUT"))
+data_box_plot$Day <- factor(data_box_plot$Day, levels=c("Training", "OPR"))
+data_box_plot$Training_Treatment <- factor(data_box_plot$Training_Treatment, levels=c("Training_Saline", "OPR_Saline", "Training_MPTP","OPR_MPTP"))
+data_box_plot$MouseNumber<- factor(data_box_plot$MouseNumber)
+
+#Violin Plots for NOR scoring
+#Violin Plot
+cols <- c("WT" = "black", "KO" = "firebrick")
+cols <- c("WT" = "black", "HET" = "purple", "MUT"="firebrick")
+
+#cols <- c("MPTP" = "blue", "Saline" = "firebrick")
+violin<-ggplot(data=data_box_plot,aes(x=Genotype,y=Total_Hang_Time, fill=Genotype))+geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+mytheme + geom_point(aes(group = Mouse.ID))
+violin
+violin<-ggplot(data=data_box_plot,aes(x=OLM,y=Percent.Investigation.Time, fill=OLM))+ scale_color_manual(name="SLC-Genotype", values=cols) +geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+mytheme + geom_point(aes(group = MouseID, label=MouseID)) + geom_line(aes(group = MouseID,color=SLC.Genotype),size=1)
+violin
