@@ -8,7 +8,7 @@ library(ggbeeswarm)
 library(ggpubr)
 library(ggsignif)
 
-setwd("Desktop/JACOBS' LAB/")
+setwd("Desktop/JacobsLab/")
 data<-read.csv("SLC Spontaneous Weights - Sheet1.csv", header=TRUE)
 names(data)
 generate_boxplots <- function(input_data, X, Y, min,max){
@@ -41,4 +41,18 @@ generate_boxplots(data, Genotype, Weight..g., 0,40 ) +
   stat_compare_means(comparisons = list(c("WT", "HET"),
                                         c("WT", "MUT"),
                                         c("HET","MUT")),method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
+
+# Add parametric and non-parametric stats to README.md
+# WT vs MUT
+data <- data %>% filter(Genotype!="HET")
+t.test(Weight..g.~Genotype,data)
+wilcox.test(Weight..g.~Genotype,data)
+
+data<-read.csv("SLC Spontaneous Weights - Sheet1.csv", header=TRUE)
+
+# WT vs HET
+data <- data %>% filter(Genotype!="MUT")
+t.test(Weight..g.~Genotype,data)
+wilcox.test(Weight..g.~Genotype,data)
+
 
