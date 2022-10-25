@@ -1,11 +1,6 @@
 # slcspontaneous
 scripts used for slc spontaneous project 
 
-###this is an alteration
-<<<<<<< HEAD
-im jacob
-=======
-
 
 #### Body Weight Stats
 ##### WT vs MUT
