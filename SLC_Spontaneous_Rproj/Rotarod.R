@@ -9,13 +9,12 @@ library(ggbeeswarm)
 library(ggpubr)
 library(ggsignif)
 
-data<-read.csv("Data_Rotarod_Analysis.csv", header=TRUE)
+data<-read.csv("SLC_Spontaneous_Open_Field _Analysis.csv", header=TRUE)
 
 generate_boxplots <- function(input_data, X, Y, min,max){
   data<-as.data.frame(input_data)
   #Ensure correct ordering of levels 
   data$Genotype <- factor(data$Genotype, levels = c("WT", "HET", "MUT"))
-  data$Day <- factor(data$Day, levels = c("1", "2", "3"))
   
   ggplot(data=data,aes(x={{X}},y={{Y}}, fill={{X}})) + 
     #geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
@@ -25,13 +24,13 @@ generate_boxplots <- function(input_data, X, Y, min,max){
     geom_point(size=1,position=position_jitter(width=0.25),alpha=0.1)+
     theme_cowplot(16) +
     #ylim(min,max)+
-    facet_wrap(~Day)+
     theme(legend.position = "none")
   
   
 }
 
-a<-generate_boxplots(data, Genotype, Average_Latency_S,0,200)+stat_signif(comparisons = list(c("WT", "HET"), c("WT","MUT")),map_signif_level = TRUE, textsize = 6, test="wilcox.test")
+a<-generate_boxplots(data, Genotype, Center_Time,0,550)+stat_signif(comparisons = list(c("WT", "HET"), c("WT","MUT")),map_signif_level = TRUE, textsize = 6, test="wilcox.test")
+a
 
 generate_longitudinal_boxplots <- function(input_data, X, Y, min,max){
   data<-as.data.frame(input_data)
