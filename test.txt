@@ -1,2 +1,0 @@
-slc
-nano text file
