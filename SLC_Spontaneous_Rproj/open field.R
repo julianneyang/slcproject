@@ -8,7 +8,7 @@ library(tidyr)
 library(dplyr)
 library(tidyverse)
 
-setwd("Documents/slcspontaneous/SLC_Spontaneous_Rproj/")
+setwd("~/Documents/slcspontaneous/Analysis_Files/")
 data<-read.csv("SLC_Spontaneous_Open_Field_Analysis.csv", header=TRUE)
 
 
@@ -29,14 +29,24 @@ generate_boxplots <- function(input_data, X, Y, min,max){
   
 }
 
+#Center Time vs. Genotype
 a<-generate_boxplots(data, Genotype, Center_Time,0,550)+
                     stat_compare_means(comparisons = list(c("WT", "HET"), 
                     c("WT","MUT")),method="wilcox", vjust=0.3,label="p.signif",step.increase=0.05)
 a
+
+#Distance vs Genotype
 b<-generate_boxplots(data, Genotype, Distance,0,26)+
   stat_compare_means(comparisons = list(c("WT", "HET"), 
                                         c("WT","MUT")),method="wilcox", vjust=0.3,label="p.signif",step.increase=0.05)
 b
+
+#Center Entries vs Genotype
+c<-generate_boxplots(data, Genotype, Center.Entries,0,125)+
+  stat_compare_means(comparisons = list(c("WT", "HET"), 
+                                        c("WT","MUT")),method="wilcox", vjust=0.3,label="p.signif",step.increase=0.05)
+
+c
 
 ##aggregate Plots
 
@@ -46,19 +56,26 @@ b
 ## Stratify by Sex
 
 
-c<-generate_boxplots(data, Genotype, Center_Time,0,550)+
+d<-generate_boxplots(data, Genotype, Center_Time,0,550)+
   stat_compare_means(comparisons = list(c("WT", "HET"), 
                                         c("WT","MUT")),method="wilcox", vjust=0.3,label="p.signif",step.increase=0.05)+
                                         facet_grid(~Sex)
-c
+d
 
-d<-generate_boxplots(data, Genotype, Distance,0,26)+
+e<-generate_boxplots(data, Genotype, Distance,0,26)+
   stat_compare_means(comparisons = list(c("WT", "HET"), 
                                         c("WT","MUT")),method="wilcox", vjust=0.3,label="p.signif",step.increase=0.05)+
                                      facet_grid(~Sex)
-d
+e
 
-plot_grid(a,b,c,d)
+f<-generate_boxplots(data, Genotype, Center.Entries,0,125)+
+  stat_compare_means(comparisons = list(c("WT", "HET"), 
+                                        c("WT","MUT")),method="wilcox", vjust=0.3,label="p.signif",step.increase=0.05)+
+  facet_grid(~Sex)
+f
+
+
+plot_grid(a,b,c,d,e,f)
 
 #Center_Time
 # Add parametric and non-parametric stats to README.md
@@ -90,5 +107,17 @@ data <- data %>% filter(Genotype!="MUT")
 t.test(Distance~Genotype,data)
 wilcox.test(Distance~Genotype,data)
 
+#Center.Entries
+# WT vs MUT
+data<-read.csv("SLC_Spontaneous_Open_Field_Analysis.csv", header=TRUE)
+data <- data %>% filter(Genotype!="HET")
+t.test(Center.Entries~Genotype,data)
+wilcox.test(Center.Entries~Genotype,data)
 
+data<-read.csv("SLC_Spontaneous_Open_Field_Analysis.csv", header=TRUE)
+
+# WT vs HET
+data <- data %>% filter(Genotype!="MUT")
+t.test(Center.Entries~Genotype,data)
+wilcox.test(Center.Entries~Genotype,data)
 
