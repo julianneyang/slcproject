@@ -135,5 +135,3 @@ W = 126, p-value = 0.9556
 alternative hypothesis: true location shift is not equal to 0
 ```
 
-
->>>>>>> d33cb938d73839f744ec31701e1c25368311234c
