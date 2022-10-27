@@ -1,5 +1,5 @@
-####Body Weight Stats
-#####WT vs MUT
+#### Body Weight Stats
+##### WT vs MUT
 ```R 
 Welch Two Sample t-test
 data:  Weight..g. by Genotype
@@ -18,7 +18,7 @@ W = 56.5, p-value = 0.225
 alternative hypothesis: true location shift is not equal to 0
 ```
 
-#####WT vs HET
+##### WT vs HET
 ```R
 Welch Two Sample t-test
 data:  Weight..g. by Genotype
