@@ -10,7 +10,7 @@ library(cowplot)
 library(ggpubr)
 library(dplyr)
 
-setwd("C:/Users/Jacobs Laboratory/Documents/JCYang/ICPMS/")
+setwd("C:/Users/Jacobs Laboratory/Documents/JCYang/SLC Spontaneous/ICPMS/")
 here::i_am("ICP_MS_Analysis.R")
 
 ### Data Preprocessing ---
@@ -22,71 +22,8 @@ vector <- names(df)
 elements <- vector[1:7]
 df <- df %>% mutate_at(c(elements), as.numeric)
 str(df)
-
-# Generate a version of a df without outlier samples 
-# create detect outlier function
-
-detect_outlier <- function(x) {
-  
-  # calculate first quantile
-  Quantile1 <- quantile(x, probs=.25,na.rm = TRUE)
-  # calculate third quantile
-  Quantile3 <- quantile(x, probs=.75,na.rm=TRUE)
-  # calculate inter quartile range
-  IQR = Quantile3-Quantile1
-  # return true or false
-  x > Quantile3 + (IQR*1.5) | x < Quantile1 - (IQR*1.5)
-}
-
-# create remove outlier function
-remove_outlier <- function(dataframe,
-                            columns=names(dataframe)) {
-  
-  # for loop to traverse in columns vector
-  for (col in columns) {
-    
-    # remove observation if it satisfies outlier function
-    dataframe <- dataframe[!detect_outlier(dataframe[[col]]), ]
-  }
-  
-  # return dataframe
-  print("Remove outliers")
-  print(dataframe)
-  
-}
-
-df_nooutliers_iron <- remove_outlier(df, c('Iron'))
-  df_nooutliers_iron <- df_nooutliers_iron %>% select(c("Iron","Batch", "MouseID","SampleType","Genotype", "Sex"))
-  df_nooutliers_iron$Element <- "Iron"
-  colnames(df_nooutliers_iron)[1] <- "Concentration"
-df_nooutliers_cobalt <- remove_outlier(df, c('Cobalt'))
-  df_nooutliers_cobalt <- df_nooutliers_cobalt %>% select(c("Cobalt","Batch", "MouseID","SampleType","Genotype", "Sex"))
-  df_nooutliers_cobalt$Element <- "Cobalt"
-  colnames(df_nooutliers_cobalt)[1] <- "Concentration"
-df_nooutliers_copper <- remove_outlier(df, c('Copper'))
-  df_nooutliers_copper <- df_nooutliers_copper %>% select(c("Copper","Batch", "MouseID","SampleType","Genotype", "Sex"))
-  df_nooutliers_copper$Element <- "Copper"
-  colnames(df_nooutliers_copper)[1] <- "Concentration"
-df_nooutliers_zinc <- remove_outlier(df, c('Zinc'))
-  df_nooutliers_zinc <- df_nooutliers_zinc %>% select(c("Copper","Batch", "MouseID","SampleType","Genotype", "Sex"))
-  df_nooutliers_zinc$Element <- "Zinc"
-  colnames(df_nooutliers_zinc)[1] <- "Concentration"
-df_nooutliers_cadmium <- remove_outlier(df, c('Cadmium'))
-  df_nooutliers_cadmium <- df_nooutliers_cadmium %>% select(c("Copper","Batch", "MouseID","SampleType","Genotype", "Sex"))
-  df_nooutliers_cadmium$Element <- "Cadmium"
-  colnames(df_nooutliers_cadmium)[1] <- "Concentration"
-df_nooutliers_mn <- remove_outlier(df, c('Manganese'))
-  df_nooutliers_mn <- df_nooutliers_mn %>% select(c("Copper","Batch", "MouseID","SampleType","Genotype", "Sex"))
-  df_nooutliers_mn$Element <- "Manganese"
-  colnames(df_nooutliers_mn)[1] <- "Concentration"
-df_nooutliers_se <- remove_outlier(df, c('Selenium'))
-  df_nooutliers_se <- df_nooutliers_se %>% select(c("Copper","Batch", "MouseID","SampleType","Genotype", "Sex"))
-  df_nooutliers_se$Element <- "Selenium"
-  colnames(df_nooutliers_se)[1] <- "Concentration"
-  
-aggregated_df_nooutliers <- rbind(df_nooutliers_iron, df_nooutliers_cobalt,
-                                  df_nooutliers_copper, df_nooutliers_zinc,
-                                  df_nooutliers_cadmium, df_nooutliers_mn, df_nooutliers_se)
+df$Genotype_Batch <- paste0(df$Genotype, "_",df$Batch)
+df$Genotype_Sex <- paste0(df$Genotype,"_",df$Sex)
 
 # Subset by SampleType - with outliers
 df_fp_col <- df %>% filter(SampleType=="FP-COL")
@@ -96,27 +33,23 @@ df_muc_si <- df %>% filter(SampleType=="MUC-SI")
 df_ts_col <- df %>% filter(SampleType=="TS-COL")
 df_ts_si <- df %>% filter(SampleType=="TS-SI")
 
-# Subset by SampleType - without outliers
-df_fp_col <- aggregated_df_nooutliers %>% filter(SampleType=="FP-COL")
-df_fp_si <- aggregated_df_nooutliers %>% filter(SampleType=="FP-SI")
-df_muc_col <- aggregated_df_nooutliers %>% filter(SampleType=="MUC-COL")
-df_muc_si <- aggregated_df_nooutliers %>% filter(SampleType=="MUC-SI")
-df_ts_col <- aggregated_df_nooutliers %>% filter(SampleType=="TS-COL")
-df_ts_si <- aggregated_df_nooutliers %>% filter(SampleType=="TS-SI")
 
 ### Figures ---
-generate_violin_plots <- function (input_data, column_index) {
+generate_violin_plots <- function (input_data, column_index, X) {
   # read in file
   data<-as.data.frame(input_data)
   
   #Ensure correct ordering of levels 
   data$Genotype <- factor(data$Genotype, levels = c("WT","MUT"))
+  data$Genotype_Batch <- factor(data$Genotype_Batch, levels=c("WT_One","WT_Two", "WT_Three", "MUT_One", "MUT_Two", "MUT_Three"))
+  data$Genotype_Sex <- factor(data$Genotype_Sex, levels=c("WT_Male","WT_Female", "MUT_Male", "MUT_Female"))
   
   #Get correct y-axis label
   ylabel <- c(elements[column_index])
   
-  ggplot(data=data,aes(x=Genotype,y=data[, column_index], fill=Genotype)) + 
+  ggplot(data=data,aes(x={{X}},y=data[, column_index], fill=Genotype)) + 
     geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+    #scale_shape_manual(values=c(16,10))+
     scale_fill_viridis_d()+
     geom_point(size=1,position=position_jitter(width=0.25),alpha=0.8)+
     theme_cowplot(16) +
@@ -135,37 +68,37 @@ muc_si_plots <- list()
 ts_col_plots <- list()
 ts_si_plots <- list()
 compare_vector<- c("WT","MUT")
-# Loop through all elements
 
+# Loop through all elements - Genotype as X variable
 for (int in 1:7){
     print(int)
 
-    fp_col <- generate_violin_plots(df_fp_col, int) +
+    fp_col <- generate_violin_plots(df_fp_col, int, Genotype) +
       theme(plot.title = element_text(hjust = 0.5)) +
       ggtitle("FP Col")+
       stat_compare_means(comparisons = compare_vector,
                          method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
-    fp_si <- generate_violin_plots(df_fp_si, int)+
+    fp_si <- generate_violin_plots(df_fp_si, int, Genotype)+
       theme(plot.title = element_text(hjust = 0.5)) +
       ggtitle("FP SI")+
       stat_compare_means(comparisons = compare_vector,
                          method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
-    muc_si <- generate_violin_plots(df_muc_si, int) +
+    muc_si <- generate_violin_plots(df_muc_si, int, Genotype) +
       theme(plot.title = element_text(hjust = 0.5)) +
       ggtitle("MUC SI")+
       stat_compare_means(comparisons = compare_vector,
                          method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
-    muc_col <- generate_violin_plots(df_muc_col, int)+
+    muc_col <- generate_violin_plots(df_muc_col, int, Genotype)+
       theme(plot.title = element_text(hjust = 0.5)) +
       ggtitle("MUC Col")+
       stat_compare_means(comparisons = compare_vector,
                          method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
-    ts_si <- generate_violin_plots(df_ts_si, int)+
+    ts_si <- generate_violin_plots(df_ts_si, int, Genotype)+
       theme(plot.title = element_text(hjust = 0.5)) +
       ggtitle("TS SI")+
       stat_compare_means(comparisons = compare_vector,
                          method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
-    ts_col <- generate_violin_plots(df_ts_col, int)+
+    ts_col <- generate_violin_plots(df_ts_col, int, Genotype)+
       theme(plot.title = element_text(hjust = 0.5)) +
       ggtitle("TS Col")+
       stat_compare_means(comparisons = compare_vector,
@@ -181,33 +114,102 @@ for (int in 1:7){
     ts_si_plots[[int]] <- ts_si
 }
 
-#Iron 
-dev.new(width=15, height=10)
-element_plots[[1]]
+# Loop through all elements - Genotype_Batch as X variable
+element_plots <- list()
+fp_col_plots <- list()
+fp_si_plots <- list()
+muc_col_plots <- list()
+muc_si_plots <- list()
+ts_col_plots <- list()
+ts_si_plots <- list()
+compare_vector<- c("WT","MUT")
 
-#Cobalt
-dev.new(width=15, height=10)
-element_plots[[2]]
+for (int in 1:7){
+  print(int)
+  
+  fp_col <- generate_violin_plots(df_fp_col, int, Genotype_Batch) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("FP Col")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  fp_si <- generate_violin_plots(df_fp_si, int, Genotype_Batch)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("FP SI")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  muc_si <- generate_violin_plots(df_muc_si, int, Genotype_Batch) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("MUC SI")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  muc_col <- generate_violin_plots(df_muc_col, int, Genotype_Batch)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("MUC Col")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  ts_si <- generate_violin_plots(df_ts_si, int, Genotype_Batch)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("TS SI")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  ts_col <- generate_violin_plots(df_ts_col, int, Genotype_Batch)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("TS Col")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  
+  element_plots[[int]] <- cowplot::plot_grid(fp_col, fp_si,muc_col,muc_si, ts_col,ts_si, 
+                                             rows = 3,cols=2)
+  fp_col_plots[[int]] <- fp_col
+  fp_si_plots[[int]] <- fp_si
+  muc_col_plots[[int]] <- muc_col
+  muc_si_plots[[int]] <- muc_si
+  ts_col_plots[[int]] <- ts_col
+  ts_si_plots[[int]] <- ts_si
+}
 
-#Copper
-dev.new(width=15, height=10)
-element_plots[[3]]
+# Loop through all elements - Genotype_Sex as X variable
+element_plots <- list()
+fp_col_plots <- list()
+fp_si_plots <- list()
+muc_col_plots <- list()
+muc_si_plots <- list()
+ts_col_plots <- list()
+ts_si_plots <- list()
 
-#Zinc
-dev.new(width=15, height=10)
-element_plots[[4]]
+for (int in 1:7){
+  print(int)
+  
+  fp_col <- generate_violin_plots(df_fp_col, int, Genotype_Sex) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("FP Col")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  fp_si <- generate_violin_plots(df_fp_si, int, Genotype_Sex)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("FP SI")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  muc_si <- generate_violin_plots(df_muc_si, int, Genotype_Sex) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("MUC SI")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  muc_col <- generate_violin_plots(df_muc_col, int, Genotype_Sex)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("MUC Col")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  ts_si <- generate_violin_plots(df_ts_si, int, Genotype_Sex)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("TS SI")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  ts_col <- generate_violin_plots(df_ts_col, int, Genotype_Sex)+
+    theme(plot.title = element_text(hjust = 0.5)) +
+    ggtitle("TS Col")+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  
+  element_plots[[int]] <- cowplot::plot_grid(fp_col, fp_si,muc_col,muc_si, ts_col,ts_si, 
+                                             rows = 3,cols=2)
+  fp_col_plots[[int]] <- fp_col
+  fp_si_plots[[int]] <- fp_si
+  muc_col_plots[[int]] <- muc_col
+  muc_si_plots[[int]] <- muc_si
+  ts_col_plots[[int]] <- ts_col
+  ts_si_plots[[int]] <- ts_si
+}
 
-#Cadmium
-dev.new(width=15, height=10)
-element_plots[[5]]
 
-#Manganese
-dev.new(width=15, height=10)
-myplots[[6]]
-
-#Selenium
-dev.new(width=15, height=10)
-myplots[[7]]
 
 #FP COL
 dev.new(width=15, height=10)
