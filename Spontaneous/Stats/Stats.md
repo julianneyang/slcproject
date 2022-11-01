@@ -418,3 +418,111 @@ W = 0.5, p-value = 0.002535
 alternative hypothesis: true location shift is not equal to 0
 
 ```
+
+#### OLM Stats
+##### Percent Time Investigating
+###### WT vs MUT: Training
+```R
+Welch Two Sample t-test
+data:  Percent_Time_Investigated by Genotype
+t = -0.083481, df = 49.994, p-value = 0.9338
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -7.916875  7.285045
+sample estimates:
+mean in group MUT  mean in group WT 
+         49.68621          50.00213 
+```
+
+```R
+Wilcoxon rank sum exact test
+data:  Percent_Time_Investigated by Genotype
+W = 324, p-value = 0.9196
+alternative hypothesis: true location shift is not equal to 0
+```
+
+###### WT vs MUT: Testing
+```R
+Welch Two Sample t-test
+data:  Percent_Time_Investigated by Genotype
+t = -0.083481, df = 49.994, p-value = 0.9338
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -7.916875  7.285045
+sample estimates:
+mean in group MUT  mean in group WT 
+         49.68621          50.00213
+```
+
+```R
+Wilcoxon rank sum exact test
+data:  Percent_Time_Investigated by Genotype
+W = 324, p-value = 0.9196
+alternative hypothesis: true location shift is not equal to 0
+```
+###### WT vs HET: Training
+```R
+Welch Two Sample t-test
+data:  Percent_Time_Investigated by Genotype
+t = 1.6575, df = 50.952, p-value = 0.1036
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -1.222657 12.796882
+sample estimates:
+mean in group HET  mean in group WT 
+         55.78924          50.00213 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+data:  Percent_Time_Investigated by Genotype
+W = 525.5, p-value = 0.1023
+alternative hypothesis: true location shift is not equal to 0
+```
+###### WT vs HET: Testing
+```R
+Welch Two Sample t-test
+data:  Percent_Time_Investigated by Genotype
+t = -1.6575, df = 50.952, p-value = 0.1036
+alternative hypothesis: true difference in means between group WT and group HET is not equal to 0
+95 percent confidence interval:
+ -12.796882   1.222657
+sample estimates:
+ mean in group WT mean in group HET 
+         50.00213          55.78924  
+```
+```R
+Wilcoxon rank sum test with continuity correction
+data:  Percent_Time_Investigated by Genotype
+W = 314.5, p-value = 0.1023
+alternative hypothesis: true location shift is not equal to 0
+```
+###### Linear Mixed-Effects Model
+```R
+Data: data_box_plot 
+       AIC      BIC    logLik
+  630.9811 644.9655 -309.4906
+
+Random effects:
+ Formula: ~1 | MouseID
+        (Intercept) Residual
+StdDev: 0.002652787 13.05602
+
+Fixed effects:  Percent_Investigation_Time ~ Sex + Genotype 
+               Value Std.Error DF   t-value p-value
+(Intercept) 49.50007  2.981069 39 16.604804  0.0000
+SexMale      0.83677  2.983653 37  0.280450  0.7807
+GenotypeHET  5.81102  3.431777 37  1.693298  0.0988
+GenotypeMUT -0.11813  3.731955 37 -0.031655  0.9749
+ Correlation: 
+            (Intr) SexMal GntHET
+SexMale     -0.601              
+GenotypeHET -0.570  0.025       
+GenotypeMUT -0.624  0.189  0.448
+
+Standardized Within-Group Residuals:
+       Min         Q1        Med         Q3        Max 
+-2.4836355 -0.6341935 -0.1164272  0.6357866  2.2252180 
+
+Number of Observations: 80
+Number of Groups: 40 
+```
