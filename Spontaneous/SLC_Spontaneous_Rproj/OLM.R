@@ -94,25 +94,78 @@ plot_grid(females_only, males_only)
 #Stratify by Sex, Testing Only
 data_box_plot$Genotype <- factor(data_box_plot$Genotype,levels=c("WT", "HET", "MUT"))
 fulltesting <- subset(data_box_plot, Day=="Testing")
-violin<-ggplot(data=fulltesting,aes(x=Genotype,y=Percent_Time_Investigated, fill=Genotype))+
-  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
-  geom_point(aes(color=Genotype),size=2,position=position_jitter(width=0.25),alpha=1)+
-  mytheme + theme_cowplot(16) + ggtitle("OLM Testing Day - Genotypes")  + ylim(10,80)
-plot(violin)
+
+generate_boxplots <- function(input_data, X, Y, min,max){
+  data<-as.data.frame(input_data)
+  #Ensure correct ordering of levels 
+  data$Genotype <- factor(data$Genotype, levels = c("WT", "HET", "MUT"))
+  data$Day <- factor(data$Day, levels = c("1", "2", "3"))
+  
+  ggplot(data=data,aes(x={{X}},y={{Y}}, fill={{X}})) + 
+    #geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+    geom_boxplot(alpha=0.25)+ 
+    geom_quasirandom(alpha=0.1)+
+    scale_fill_viridis_d()+
+    geom_point(size=1,position=position_jitter(width=0.25),alpha=0.1)+
+    theme_cowplot(16) +
+    #ylim(min,max)+
+    ggtitle("OLM Testing Day - Genotypes")  +
+    theme(legend.position = "none")
+  
+  
+}
+
+full<-generate_boxplots(fulltesting, Genotype, Percent_Time_Investigated,10,80)+stat_signif(comparisons = list(c("WT", "HET"), c("WT","MUT")),map_signif_level = TRUE, textsize = 6, test="wilcox.test")
+full
+
 
 ftesting <- subset(females, Day=="Testing")
-violin2<-ggplot(data=ftesting,aes(x=Genotype,y=Percent_Time_Investigated, fill=Genotype))+
-  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
-  geom_point(aes(color=Genotype),size=2,position=position_jitter(width=0.25),alpha=1)+
-  mytheme + theme_cowplot(16) + ggtitle("OLM Testing Day - Females by Genotype")  + ylim(10,80)
+generate_fboxplots <- function(input_data, X, Y, min,max){
+  data<-as.data.frame(input_data)
+  #Ensure correct ordering of levels 
+  data$Genotype <- factor(data$Genotype, levels = c("WT", "HET", "MUT"))
+  data$Day <- factor(data$Day, levels = c("1", "2", "3"))
+  
+  ggplot(data=data,aes(x={{X}},y={{Y}}, fill={{X}})) + 
+    #geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+    geom_boxplot(alpha=0.25)+ 
+    geom_quasirandom(alpha=0.1)+
+    scale_fill_viridis_d()+
+    geom_point(size=1,position=position_jitter(width=0.25),alpha=0.1)+
+    theme_cowplot(16) +
+    #ylim(min,max)+
+    ggtitle("OLM Testing Day - Females by Genotype")  +
+    theme(legend.position = "none")
+  
+  
+}
+
+f<-generate_fboxplots(ftesting, Genotype, Percent_Time_Investigated,10,80)+stat_signif(comparisons = list(c("WT", "HET"), c("WT","MUT")),map_signif_level = TRUE, textsize = 6, test="wilcox.test")
 
 mtesting <- subset(males, Day=="Testing")
-violin3<-ggplot(data=mtesting,aes(x=Genotype,y=Percent_Time_Investigated, fill=Genotype))+
-  geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
-  geom_point(aes(color=Genotype),size=2,position=position_jitter(width=0.25),alpha=1)+
-  mytheme + theme_cowplot(16) + ggtitle("OLM Testing Day - Males by Genotype")  + ylim(10,80)
+generate_mboxplots <- function(input_data, X, Y, min,max){
+  data<-as.data.frame(input_data)
+  #Ensure correct ordering of levels 
+  data$Genotype <- factor(data$Genotype, levels = c("WT", "HET", "MUT"))
+  data$Day <- factor(data$Day, levels = c("1", "2", "3"))
+  
+  ggplot(data=data,aes(x={{X}},y={{Y}}, fill={{X}})) + 
+    #geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
+    geom_boxplot(alpha=0.25)+ 
+    geom_quasirandom(alpha=0.1)+
+    scale_fill_viridis_d()+
+    geom_point(size=1,position=position_jitter(width=0.25),alpha=0.1)+
+    theme_cowplot(16) +
+    #ylim(min,max)+
+    ggtitle("OLM Testing Day - Males by Genotype")  +
+    theme(legend.position = "none")
+  
+  
+}
 
-plot_grid(violin2, violin3)
+m<-generate_mboxplots(mtesting, Genotype, Percent_Time_Investigated,10,80)+stat_signif(comparisons = list(c("WT", "HET"), c("WT","MUT")),map_signif_level = TRUE, textsize = 6, test="wilcox.test")
+
+plot_grid(f, m)
 
 #Stat Tests
 # WT vs MUT Training
