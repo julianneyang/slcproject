@@ -419,6 +419,481 @@ alternative hypothesis: true location shift is not equal to 0
 
 ```
 
+##### Females 5 minutes: WT vs HET
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X5_min by Genotype
+W = 28, p-value = 0.1326
+alternative hypothesis: true location shift is not equal to 0
+```
+```R
+	Welch Two Sample t-test
+
+data:  X5_min by Genotype
+t = -5.398, df = 5, p-value = 0.002947
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -6.396927 -2.269740
+sample estimates:
+mean in group HET  mean in group WT 
+         0.000000          4.333333 
+```
+
+##### Males 5 minutes:WT vs MUT
+
+```R
+	Welch Two Sample t-test
+
+data:  X5_min by Genotype
+t = -0.19967, df = 5.4708, p-value = 0.8489
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -3.161131  2.694464
+sample estimates:
+mean in group MUT  mean in group WT 
+         1.666667          1.900000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X5_min by Genotype
+W = 16, p-value = 0.9302
+alternative hypothesis: true location shift is not equal to 0
+```
+
+##### Males 5 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X5_min by Genotype
+t = -1.5738, df = 13.018, p-value = 0.1395
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -3.1896865  0.5007976
+sample estimates:
+mean in group HET  mean in group WT 
+        0.5555556         1.9000000 
+```
+```R
+
+data:  X5_min by Genotype
+W = 28, p-value = 0.1326
+alternative hypothesis: true location shift is not equal to 0
+
+```
+##### Females 10 Minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X10_min by Genotype
+t = -3.1198, df = 10.363, p-value = 0.01044
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -6.639624 -1.122281
+sample estimates:
+mean in group MUT  mean in group WT 
+         1.285714          5.166667 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X10_min by Genotype
+W = 3.5, p-value = 0.01393
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Females 10 minutes:WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X10_min by Genotype
+t = -2.422, df = 10.973, p-value = 0.03394
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -6.3179855 -0.3010622
+sample estimates:
+mean in group HET  mean in group WT 
+         1.857143          5.166667 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X10_min by Genotype
+W = 6.5, p-value = 0.04168
+alternative hypothesis: true location shift is not equal to 0
+```
+
+##### Males 10 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X10_min by Genotype
+t = -0.11198, df = 5.7765, p-value = 0.9146
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -3.074433  2.807767
+sample estimates:
+mean in group MUT  mean in group WT 
+         2.666667          2.800000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X10_min by Genotype
+W = 14.5, p-value = 1
+alternative hypothesis: true location shift is not equal to 0
+```
+
+##### Males 10 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X10_min by Genotype
+t = -1.4817, df = 16.917, p-value = 0.1568
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -3.8251813  0.6696258
+sample estimates:
+mean in group HET  mean in group WT 
+         1.222222          2.800000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X10_min by Genotype
+W = 27.5, p-value = 0.1417
+alternative hypothesis: true location shift is not equal to 0
+```
+
+##### Females 15 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X15_min by Genotype
+t = -2.9554, df = 10.459, p-value = 0.01376
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -6.9561873 -0.9961937
+sample estimates:
+mean in group MUT  mean in group WT 
+         1.857143          5.833333 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X15_min by Genotype
+W = 5, p-value = 0.02536
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Females 15 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X15_min by Genotype
+t = -2.5207, df = 10.972, p-value = 0.02849
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -6.9138027 -0.4671497
+sample estimates:
+mean in group HET  mean in group WT 
+         2.142857          5.833333 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X15_min by Genotype
+W = 6.5, p-value = 0.04285
+alternative hypothesis: true location shift is not equal to 0
+```
+
+##### Males 15 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X15_min by Genotype
+t = -0.144, df = 4.008, p-value = 0.8924
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -4.05302  3.65302
+sample estimates:
+mean in group MUT  mean in group WT 
+              3.0               3.2 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X15_min by Genotype
+W = 14.5, p-value = 1
+alternative hypothesis: true location shift is not equal to 0
+
+```
+
+##### Males 15 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X15_min by Genotype
+t = -0.59276, df = 16.956, p-value = 0.5612
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -2.938666  1.649777
+sample estimates:
+mean in group HET  mean in group WT 
+         2.555556          3.200000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X15_min by Genotype
+W = 38, p-value = 0.5897
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Females 30 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X30_min by Genotype
+t = -2.4201, df = 10.987, p-value = 0.03403
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -8.0020993 -0.3788531
+sample estimates:
+mean in group MUT  mean in group WT 
+         3.142857          7.333333 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X30_min by Genotype
+W = 7, p-value = 0.05247
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Females 30 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X30_min by Genotype
+t = -2.664, df = 10.754, p-value = 0.02242
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -7.6623515 -0.7186009
+sample estimates:
+mean in group HET  mean in group WT 
+         3.142857          7.333333 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X30_min by Genotype
+W = 5.5, p-value = 0.03118
+alternative hypothesis: true location shift is not equal to 0
+```
+
+##### Males 30 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X30_min by Genotype
+t = -0.17001, df = 3.0167, p-value = 0.8758
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -6.553703  5.887037
+sample estimates:
+mean in group MUT  mean in group WT 
+         3.666667          4.000000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X30_min by Genotype
+W = 14, p-value = 0.9322
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Males 30 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X30_min by Genotype
+t = 0, df = 14.881, p-value = 1
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -3.127488  3.127488
+sample estimates:
+mean in group HET  mean in group WT 
+                4                 4 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X30_min by Genotype
+W = 44, p-value = 0.9671
+alternative hypothesis: true location shift is not equal to 0
+```
+
+##### Females 45 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X45_min by Genotype
+t = -2.7292, df = 10.612, p-value = 0.02019
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -9.0072137 -0.9451673
+sample estimates:
+mean in group MUT  mean in group WT 
+         3.857143          8.833333 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X45_min by Genotype
+W = 7, p-value = 0.0528
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Females 45 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X45_min by Genotype
+t = -2.406, df = 10.969, p-value = 0.03492
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -8.9827757 -0.3981767
+sample estimates:
+mean in group HET  mean in group WT 
+         4.142857          8.833333 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X45_min by Genotype
+W = 7, p-value = 0.05149
+alternative hypothesis: true location shift is not equal to 0
+
+```
+##### Males 45 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X45_min by Genotype
+t = 0.58724, df = 2.7649, p-value = 0.6015
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -7.190708 10.257375
+sample estimates:
+mean in group MUT  mean in group WT 
+         6.333333          4.800000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X45_min by Genotype
+W = 18.5, p-value = 0.6111
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Males 45 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X45_min by Genotype
+t = -0.14013, df = 14.895, p-value = 0.8904
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -3.964930  3.476041
+sample estimates:
+mean in group HET  mean in group WT 
+         4.555556          4.800000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X45_min by Genotype
+W = 41.5, p-value = 0.8055
+alternative hypothesis: true location shift is not equal to 0
+
+```
+
+##### Females 60 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X60_min by Genotype
+t = -2.5641, df = 9.0126, p-value = 0.03045
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -9.186282 -0.575623
+sample estimates:
+mean in group MUT  mean in group WT 
+         4.285714          9.166667 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X60_min by Genotype
+W = 8, p-value = 0.07176
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Females 60 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X60_min by Genotype
+t = -2.0967, df = 10.949, p-value = 0.06006
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -9.7146959  0.2385054
+sample estimates:
+mean in group HET  mean in group WT 
+         4.428571          9.166667 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X60_min by Genotype
+W = 7.5, p-value = 0.0604
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Males 60 minutes: WT vs MUT
+```R
+Welch Two Sample t-test
+
+data:  X5_min by Genotype
+t = -0.19967, df = 5.4708, p-value = 0.8489
+alternative hypothesis: true difference in means between group MUT and group WT is not equal to 0
+95 percent confidence interval:
+ -3.161131  2.694464
+sample estimates:
+mean in group MUT  mean in group WT 
+         1.666667          1.900000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X5_min by Genotype
+W = 16, p-value = 0.9302
+alternative hypothesis: true location shift is not equal to 0
+```
+##### Males 60 minutes: WT vs HET
+```R
+Welch Two Sample t-test
+
+data:  X5_min by Genotype
+t = -1.5738, df = 13.018, p-value = 0.1395
+alternative hypothesis: true difference in means between group HET and group WT is not equal to 0
+95 percent confidence interval:
+ -3.1896865  0.5007976
+sample estimates:
+mean in group HET  mean in group WT 
+        0.5555556         1.9000000 
+```
+```R
+Wilcoxon rank sum test with continuity correction
+
+data:  X5_min by Genotype
+W = 28, p-value = 0.1326
+alternative hypothesis: true location shift is not equal to 0
+```
+
 #### OLM Stats
 ##### Percent Time Investigating
 ###### WT vs MUT: Training
