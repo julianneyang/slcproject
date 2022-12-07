@@ -1,0 +1,45 @@
+Mouse ID,Time_min,Time_sec,Time_csec,Total_Time,SLC_Genotype,ASO_Tg,Sex,,COUNTUNIQUE of Mouse ID,ASO_Tg,,,,,ASO_Tg,Other_MouseID,MouseID,Age,DOB,Parent-Cage,Sex,SLCA393T-MUT
+327,4,30,12,270.12,HET,Negative,Female,,SLC_Genotype,Negative,Positive,Grand Total,,,,542,542,69w0d,44417,alpha-SIX,Female,++ 
+577,4,49,1,289.01,HET,Positive,Female,,HET,14,11,25,,,,604,577,70w6d,44404,alpha-FOUR,Female,+- 
+539,4,50,49,290.49,HET,Negative,Female,,MUT,1,5,6,,,,539,539,69w0d,44417,alpha-SIX,Female,+- 
+718,6,45,93,405.93,HET,Negative,Female,,WT,2,3,5,,,,544,544,68w0d,44424,alpha-SEVEN,Female,+- 
+669,8,38,52,518.52,HET,Negative,Female,,Grand Total,17,19,36,,,,340,579,70w6d,44404,alpha-FOUR,Male,+- 
+320,8,52,55,532.55,HET,Negative,Female,,,,,,,,,341,580,70w6d,44404,alpha-FOUR,Male,+- 
+328,9,20,82,560.82,HET,Negative,Female,,,,,,,,,582,582,70w6d,44404,alpha-FOUR,Male,+- 
+329,5,5,64,305.64,HET,Negative,Male,,,,,,,,,536,536,69w0d,44417,alpha-SIX,Male,+- 
+545,5,39,18,339.18,HET,Negative,Male,,,,,,,,,537,537,69w0d,44417,alpha-SIX,Male,-- 
+339,8,49,92,529.92,HET,Negative,Male,,,,,,,,,540,540,69w0d,44417,alpha-SIX,Female,-- 
+335,9,40,28,580.28,HET,Negative,Male,,,,,,,,,663,663,64w5d,44447,alpha-THREE,Male,-- 
+341,9,52,98,592.98,HET,Negative,Male,,,,,,,,,670,670,64w3d,44449,alpha-FOUR,Female,-- 
+330,12,43,23,763.23,HET,Negative,Male,,,,,,,,,335,538,69w0d,44417,alpha-SIX,Male,+- 
+338,12,53,54,773.54,HET,Negative,Male,,,,,,,,,545,545,68w0d,44424,alpha-SEVEN,Male,+- 
+333,13,16,83,796.83,HET,Negative,Male,,,,,,,,,333,546,68w0d,44424,alpha-SEVEN,Male,+- 
+332,9,0,74,540.74,MUT,Negative,Female,,,,,,,,,334,547,68w0d,44424,alpha-SEVEN,Male,+- 
+670,8,20,0,500,WT,Negative,Female,,,,,,,,,669,669,64w3d,44449,alpha-FOUR,Female,+- 
+537,5,56,35,356.35,WT,Negative,Male,,,,,,,,,661,661,64w5d,44447,alpha-THREE,Male,++ 
+544,4,50,14,290.14,HET,Positive,Female,,,,,,,,,665,665,64w5d,44447,alpha-THREE,Female,++ 
+326,5,42,10,342.1,HET,Positive,Female,,,,,,,,,332,666,64w5d,44447,alpha-THREE,Female,++ 
+719,8,19,2,499.02,HET,Positive,Female,,,,,,,,,667,667,64w5d,44447,alpha-THREE,Female,++ 
+351,11,23,96,683.96,HET,Positive,Female,,,,,,,,,351,711,61w5d,44468,alpha-FIVE,Female,+- 
+337,15,0,0,900,HET,Positive,Male,,,,,,,,,718,718,61w5d,44468,alpha-SIX,Female,+- 
+334,11,28,96,688.96,HET,Positive,Male,,,,,,,,,719,719,61w5d,44468,alpha-SIX,Female,+- 
+340,6,11,13,371.13,HET,Positive,Male,,,,,,,,,326,716,61w5d,44468,alpha-SIX,Female,+- 
+582,4,5,36,245.36,HET,Positive,Male,,,,,,,,,320,713,61w5d,44468,alpha-SIX,Female,+- 
+536,15,0,0,900,HET,Positive,Male,,,,,,,,,337,712,61w5d,44468,alpha-SIX,Male,+- 
+331,13,18,51,798.51,HET,Positive,Male,,,,,,,,,338,714,61w5d,44468,alpha-SIX,Male,+- 
+336,6,23,76,383.76,MUT,Positive,Female,,,,,,,,,339,715,61w5d,44468,alpha-SIX,Male,+- 
+542,2,41,25,161.25,MUT,Positive,Female,,,,,,,,,327,789,56w4d,44504,alpha-THREE,Female,+- 
+665,6,57,17,417.17,MUT,Positive,Female,,,,,,,,,328,790,56w4d,44504,alpha-THREE,Female,+- 
+667,6,28,14,388.14,MUT,Positive,Female,,,,,,,,,791,791,56w4d,44504,alpha-THREE,Male,-- 
+661,8,29,82,509.82,MUT,Positive,Male,,,,,,,,,329,792,56w4d,44504,alpha-THREE,Male,+- 
+540,4,4,94,244.94,WT,Positive,Female,,,,,,,,,330,793,56w4d,44504,alpha-THREE,Male,+- 
+791,6,44,13,404.13,WT,Positive,Male,,,,,,,,,331,794,56w4d,44504,alpha-THREE,Male,+- 
+663,5,53,58,353.58,WT,Positive,Male,,,,,,,,,336,717,61w5d,44468,alpha-SIX,Female,++ 
+,,,,,,,,,,,,,,,,#N/A,543,68w0d,44424,alpha-SEVEN,Female,-- 
+,,,,,,,,,,,,,,,,#N/A,662,64w5d,44447,alpha-THREE,Male,-- 
+,,,,,,,,,,,,,,,,#N/A,709,61w5d,44468,alpha-FIVE,Female,++ 
+,,,,,,,,,,,,,,,,#N/A,710,61w5d,44468,alpha-FIVE,Female,-- 
+,,,,,,,,,,,,,,,,#N/A,576,70w6d,44404,alpha-FOUR,Female,++ 
+,,,,,,,,,,,,,,,,#N/A,581,70w6d,44404,alpha-FOUR,Male,-- 
+,,,,,,,,,,,,,,,,#N/A,664,64w5d,44447,alpha-THREE,Male,+- 
+,,,,,,,,,,,,,,,,#N/A,668,64w5d,44447,alpha-THREE,Female,+- 
