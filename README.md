@@ -1,5 +1,5 @@
 # SLC Project 
-Julianne's laptop
+HI JAMMMMMMMMMM
 ### Datasets in this project 
 - Folder `ICP-MS` comes from mice aged 4-5 months which contributed FP, MUC, and TS samples for the purposes of ion measurement and also for inflammation H&E scoring 
 - Folder `Spontaneous` comes from mice aged 5-6 months which completed a behavioral panel consisting of the following:
