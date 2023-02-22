@@ -1,12 +1,12 @@
 
 library(dada2)
 
-path <- "C:/Users/Jacobs Laboratory/Desktop/Skupsky_Biotin_Zymo/BD Diet - zymo" # CHANGE to the directory containing the fastq files
+path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Raw_Data_March2022SeqRun/Baseline/" # CHANGE to the directory containing the fastq files
 list.files(path)
 
 # Extract sample names, identify forward and reverse reads
-fnFs <- sort(list.files(path, pattern="R1.fastq", full.names = TRUE))
-fnRs <- sort(list.files(path, pattern="R2.fastq", full.names = TRUE))
+fnFs <- sort(list.files(path, pattern="R1_001.fastq.gz", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern="R2_001.fastq.gz", full.names = TRUE))
 sample.names <- sapply(strsplit(basename(fnFs), ".fastq"), `[`, 1)
 
 # Assess quality of samples by position, consider length to truncate at (enterred under truncLen); run one line at a time
@@ -16,7 +16,7 @@ plotQualityProfile(fnRs[1:2])
 # Create filtered dataset
 filtFs <- file.path(path, "filtered", paste0(sample.names, "_F_filt.fastq.gz"))  # creates output filenames
 filtRs <- file.path(path, "filtered", paste0(sample.names, "_R_filt.fastq.gz"))  # creates output filenames
-out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(275,225), 
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(248,140), 
               maxN=0, maxEE=c(5,5), truncQ=2, rm.phix=TRUE,
               compress=TRUE, multithread=FALSE)  
 # maxEE controls the maximum number of expected errors (i.e. read quality), second number is for filtering of reverse reads
@@ -61,8 +61,8 @@ rownames(track) <- sample.names
 track
 
 # Assign taxonomy to ASVs using Silva database
-taxa <- assignTaxonomy(seqtab.nochim, "C:/Users/Jacobs Laboratory/Desktop/silva_nr_v132_train_set.fa.gz", multithread=TRUE)
-taxa <- addSpecies(taxa, "C:/Users/Jacobs Laboratory/Desktop/silva_species_assignment_v132.fa.gz")
+taxa <- assignTaxonomy(seqtab.nochim, "C:/Users/Jacobs Laboratory/Desktop/16S_Taxonomy_Classifiers/silva_nr99_v138.1_wSpecies_train_set.fa.gz", multithread=TRUE)
+taxa <- addSpecies(taxa, "C:/Users/Jacobs Laboratory/Desktop/16S_Taxonomy_Classifiers/silva_species_assignment_v138.1.fa.gz")
 taxa.print <- taxa # Removing sequence rownames for display only
 rownames(taxa.print) <- NULL
 head(taxa.print)
@@ -71,7 +71,7 @@ head(taxa.print)
 taxa[is.na(taxa)] <- ""
 taxonomy<-paste("k__",taxa[,1],"; ","p__",taxa[,2],"; ","c__",taxa[,3],"; ","o__",taxa[,4],"; ","f__",taxa[,5],"; ","g__",taxa[,6],"; ","s__",taxa[,7],sep="")
 output<-cbind(t(seqtab.nochim), taxonomy)
-write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/Biotin Deficiency 2022 Final/Zymo_BD_CTRL_Supp/ASV_table.tsv", sep="\t", col.names=NA)
+write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/Baseline_ASV_table_Silva_v138_1.tsv", sep="\t", col.names=NA)
 # Need to modify .txt file by typing "#OTU" in the upper left box, can then import into QIIME
 
 #creating a phylogenetic tree: process takes a long time 
