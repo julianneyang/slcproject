@@ -105,4 +105,4 @@ ps
 #Exporting tree
 library(ape)
 tree1 = phy_tree(ps)
-ape::write.tree(tree1, "C:/Users/JacobsLab/Desktop/Venu_Shared_Floder/Miseq_2020_02/SalkInst_dataFeb2020/SalkInst_Feb2020_tree.tree")
+ape::write.tree(tree1, "C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/SLC_Baseline_tree.tree")
