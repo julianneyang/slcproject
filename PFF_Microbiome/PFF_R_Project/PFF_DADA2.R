@@ -5,10 +5,12 @@ path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Raw_Data_March2022SeqRun/PF
 list.files(path)
 
 # Extract sample names, identify forward and reverse reads
-fnFs <- sort(list.files(path, pattern="R1-001.fastq.gz", full.names = TRUE))
-fnRs <- sort(list.files(path, pattern="R2-001.fastq.gz", full.names = TRUE))
-sample.names <- sapply(strsplit(basename(fnFs), ".fastq"), `[`, 1)
-
+fnFs <- sort(list.files(path, pattern="R1", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern="R2", full.names = TRUE))
+sample.names <- sapply(strsplit(basename(fnFs), "001.fastq"), `[`, 1)
+sample.names <- gsub("-","_", sample.names)
+sample.names <- gsub("_S.*","",sample.names)
+unique(sample.names)
 # Assess quality of samples by position, consider length to truncate at (enterred under truncLen); run one line at a time
 plotQualityProfile(fnFs[1:2]) #quality score under 30 is bad; these are all good quality 
 plotQualityProfile(fnRs[1:2])
