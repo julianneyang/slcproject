@@ -88,3 +88,74 @@ Total        33    69.846                 1.00000
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 ```
+
+## Cecum
+```R
+> data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
+'adonis' will be deprecated: use 'adonis2' instead
+> data.adonis$aov.tab
+Permutation: free
+Number of permutations: 10000
+
+Terms added sequentially (first to last)
+
+          Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)
+Sex        1     4.132  4.1320  2.0835 0.05856 0.1347
+Genotype   2     4.954  2.4772  1.2491 0.07021 0.2987
+Residuals 31    61.480  1.9832         0.87123       
+Total     34    70.566                 1.00000
+```
+
+```R
+> data.adonis$aov.tab
+Permutation: free
+Number of permutations: 10000
+
+Terms added sequentially (first to last)
+
+             Df SumsOfSqs MeanSqs F.Model      R2  Pr(>F)  
+Sex           1     4.132  4.1320  2.2464 0.05856 0.12249  
+Genotype      2     4.954  2.4772  1.3468 0.07021 0.26657  
+Sex:Genotype  2     8.137  4.0685  2.2118 0.11531 0.07699 .
+Residuals    29    53.343  1.8394         0.75592          
+Total        34    70.566                 1.00000          
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+## Colon
+```R
+> data.adonis$aov.tab
+Permutation: free
+Number of permutations: 10000
+
+Terms added sequentially (first to last)
+
+          Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)  
+Sex        1     7.249  7.2489  3.7455 0.09966 0.0292 *
+Genotype   2     3.556  1.7778  0.9186 0.04888 0.4521  
+Residuals 32    61.932  1.9354         0.85146         
+Total     35    72.737                 1.00000         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
+
+```
+
+```R
+'adonis' will be deprecated: use 'adonis2' instead
+> data.adonis$aov.tab
+Permutation: free
+Number of permutations: 10000
+
+Terms added sequentially (first to last)
+
+             Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)  
+Sex           1     7.249  7.2489  3.6149 0.09966 0.0315 *
+Genotype      2     3.556  1.7778  0.8866 0.04888 0.4851  
+Sex:Genotype  2     1.774  0.8868  0.4422 0.02438 0.7719  
+Residuals    30    60.159  2.0053         0.82707         
+Total        35    72.737                 1.00000         
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```

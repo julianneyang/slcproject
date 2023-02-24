@@ -207,3 +207,34 @@ data.adonis$aov.tab
 
 data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
 data.adonis$aov.tab
+
+# Cecum
+data.dist<-read.table(file= "rpca/dm_rpca_s5_min10000_PFF_Cecum_min10000_no_tax_PFF_ASV_table.qza.txt/distance-matrix.tsv")
+metadata <- read.csv("../starting_files/PFF_Metadata.csv", header=TRUE, row.names=1)
+
+
+target <- row.names(data.dist)
+metadata = metadata[match(target, row.names(metadata)),]
+target == row.names(metadata)
+data.dist <- as.dist(as(data.dist, "matrix"))
+
+data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+# Colon
+data.dist<-read.table(file= "rpca/dm_rpca_s5_min10000_PFF_Colon_min10000_no_tax_PFF_ASV_table.qza.txt/distance-matrix.tsv")
+metadata <- read.csv("../starting_files/PFF_Metadata.csv", header=TRUE, row.names=1)
+
+target <- row.names(data.dist)
+metadata = metadata[match(target, row.names(metadata)),]
+target == row.names(metadata)
+data.dist <- as.dist(as(data.dist, "matrix"))
+
+data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
