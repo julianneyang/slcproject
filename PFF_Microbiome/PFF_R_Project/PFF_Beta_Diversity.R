@@ -163,6 +163,7 @@ plot_grid(baseline_bc, jejunum_bc, cecum_bc, colon_bc, nrow=2, ncol=2, labels=c(
 
 ### Beta - Diversity Stats ---
 
+## RPCA --
 # longitudinal
 metadata <-read.delim("../starting_files/PFF_Mapping.tsv",sep="\t",header=TRUE, row.names=1) #mapping file
 write.csv(metadata, "../starting_files/PFF_Metadata.csv")
@@ -210,6 +211,80 @@ data.adonis$aov.tab
 
 # Cecum
 data.dist<-read.table(file= "rpca/dm_rpca_s5_min10000_PFF_Cecum_min10000_no_tax_PFF_ASV_table.qza.txt/distance-matrix.tsv")
+metadata <- read.csv("../starting_files/PFF_Metadata.csv", header=TRUE, row.names=1)
+
+
+target <- row.names(data.dist)
+metadata = metadata[match(target, row.names(metadata)),]
+target == row.names(metadata)
+data.dist <- as.dist(as(data.dist, "matrix"))
+
+data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+# Colon
+data.dist<-read.table(file= "rpca/dm_rpca_s5_min10000_PFF_Colon_min10000_no_tax_PFF_ASV_table.qza.txt/distance-matrix.tsv")
+metadata <- read.csv("../starting_files/PFF_Metadata.csv", header=TRUE, row.names=1)
+
+target <- row.names(data.dist)
+metadata = metadata[match(target, row.names(metadata)),]
+target == row.names(metadata)
+data.dist <- as.dist(as(data.dist, "matrix"))
+
+data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab 
+
+## Bray Curtis --
+# longitudinal
+names(metadata)
+permutewithin <- c("Study")
+subjectdata <- c("Sex","Genotype", "MouseID")
+
+?Microbiome.Biogeography::run_repeated_PERMANOVA()
+run_repeated_PERMANOVA("bray_curtis/DM/export_s9_min10000_Yes_min10000_no_tax_PFF_ASV_table_DM/distance-matrix.tsv",
+                       "../starting_files/PFF_Metadata.csv",
+                       permute_columns_vector = permutewithin,
+                       subject_metadata_vector = subjectdata)
+
+# Jejunum
+data.dist<-read.table(file= "bray_curtis/DM/export_s5_min10000_PFF_Jejunum_min10000_no_tax_PFF_ASV_table_DM/distance-matrix.tsv")
+metadata <- read.csv("../starting_files/PFF_Metadata.csv", header=TRUE, row.names=1)
+
+target <- row.names(data.dist)
+metadata = metadata[match(target, row.names(metadata)),]
+target == row.names(metadata)
+data.dist <- as.dist(as(data.dist, "matrix"))
+
+data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+# Baseline
+data.dist<-read.table(file= "bray_curtis/DM/export_s3_min10000_PFF_Baseline_min10000_no_tax_PFF_ASV_table_DM/distance-matrix.tsv")
+metadata <- read.csv("../starting_files/PFF_Metadata.csv", header=TRUE, row.names=1)
+
+
+target <- row.names(data.dist)
+metadata = metadata[match(target, row.names(metadata)),]
+target == row.names(metadata)
+data.dist <- as.dist(as(data.dist, "matrix"))
+
+data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+# Cecum
+data.dist<-read.table(file= "bray_curtis/DM/export_s5_min10000_PFF_Cecum_min10000_no_tax_PFF_ASV_table_DM/distance-matrix.tsv")
 metadata <- read.csv("../starting_files/PFF_Metadata.csv", header=TRUE, row.names=1)
 
 
