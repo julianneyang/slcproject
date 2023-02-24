@@ -237,4 +237,6 @@ data.adonis=adonis(data.dist ~ Sex+ Genotype, data=metadata, permutations=10000)
 data.adonis$aov.tab
 
 data.adonis=adonis(data.dist ~ Sex*Genotype, data=metadata, permutations=10000)
-data.adonis$aov.tab
+data.adonis$aov.tab 
+
+
