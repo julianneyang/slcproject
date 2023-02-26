@@ -60,7 +60,15 @@ generate_cs_pcoA_plots <- function(ordination_file, metadata, title, colorvariab
   labs(title= paste0({{title}})) 
   p
 }
+
 genotype_cols<- c("MUT" = "red", "WT" = "black", "HET"="blue")
+
+baseline_rpca<- generate_cs_pcoA_plots("pcoa_rpca_s20_min10000_Baseline_ASV_table_Silva_v138_1.qza.txt/ordination.csv", "../starting_files/Baseline_Metadata - Baseline_Metadata.tsv", "Baseline RPCA", Genotype,genotype_cols)+
+  theme(legend.background = element_rect(fill="lightblue", size=0.5, linetype="solid")) +
+  theme(plot.title = element_text(hjust = 0.5))+
+  stat_ellipse()
+baseline_rpca
+
 baseline_rpca_by_Line <- generate_cs_pcoA_plots("pcoa_rpca_s20_min10000_Baseline_ASV_table_Silva_v138_1.qza.txt/ordination.csv", "../starting_files/Baseline_Metadata - Baseline_Metadata.tsv", "Baseline RPCA", Genotype,genotype_cols)+
   theme(legend.background = element_rect(fill="lightblue", size=0.5, linetype="solid")) +
   theme(plot.title = element_text(hjust = 0.5))+
@@ -74,6 +82,8 @@ baseline_rpca_by_Sex <- generate_cs_pcoA_plots("pcoa_rpca_s20_min10000_Baseline_
   stat_ellipse()+
   facet_wrap(~Sex)
 baseline_rpca_by_Sex
+
+plot_grid(baseline_rpca, baseline_rpca_by_Line, baseline_rpca_by_Sex, labels=c("A","B", "C"))
 
 ### Beta - Diversity Stats ---
 
