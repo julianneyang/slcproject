@@ -1,12 +1,12 @@
 
 library(dada2)
 
-path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Raw_Data_March2022SeqRun/PFF_FastQ_Files/" # CHANGE to the directory containing the fastq files
+path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Raw_Data_March2022SeqRun/Baseline/" # CHANGE to the directory containing the fastq files
 list.files(path)
 
 # Extract sample names, identify forward and reverse reads
-fnFs <- sort(list.files(path, pattern="R1-001.fastq.gz", full.names = TRUE))
-fnRs <- sort(list.files(path, pattern="R2-001.fastq.gz", full.names = TRUE))
+fnFs <- sort(list.files(path, pattern="R1_001.fastq.gz", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern="R2_001.fastq.gz", full.names = TRUE))
 sample.names <- sapply(strsplit(basename(fnFs), ".fastq"), `[`, 1)
 
 # Assess quality of samples by position, consider length to truncate at (enterred under truncLen); run one line at a time
@@ -71,7 +71,9 @@ head(taxa.print)
 taxa[is.na(taxa)] <- ""
 taxonomy<-paste("k__",taxa[,1],"; ","p__",taxa[,2],"; ","c__",taxa[,3],"; ","o__",taxa[,4],"; ","f__",taxa[,5],"; ","g__",taxa[,6],"; ","s__",taxa[,7],sep="")
 output<-cbind(t(seqtab.nochim), taxonomy)
-write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/PFF_Microbiome/PFF_ASV_table_Silva_v138_1.tsv", sep="\t", col.names=NA)
+uniquesToFasta(seqtab.nochim, fout='C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/starting_files/rep-seqs.fna', ids=colnames(seqtab.nochim))
+write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/starting_files/Baseline_ASV_table_Silva_v138_1.tsv", sep="\t", col.names=NA)
+
 # Need to modify .txt file by typing "#OTU" in the upper left box, can then import into QIIME
 
 #creating a phylogenetic tree: process takes a long time 
