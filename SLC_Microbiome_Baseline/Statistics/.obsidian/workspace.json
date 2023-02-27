@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "490b1175579084f2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Beta diversity - Bray Curtis.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Beta diversity - RPCA.md",
+                "file": "Beta diversity - Bray Curtis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Beta diversity - RPCA.md",
+                "file": "Beta diversity - Bray Curtis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Beta diversity - RPCA.md"
+                "file": "Beta diversity - Bray Curtis.md"
               }
             }
           }
@@ -146,6 +159,8 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7ed0eca8f3e97df1",
-  "lastOpenFiles": []
+  "active": "490b1175579084f2",
+  "lastOpenFiles": [
+    "Beta diversity - RPCA.md"
+  ]
 }

@@ -85,6 +85,28 @@ baseline_rpca_by_Sex
 
 plot_grid(baseline_rpca, baseline_rpca_by_Line, baseline_rpca_by_Sex, labels=c("A","B", "C"))
 
+baseline_bc<- generate_cs_pcoA_plots("bray_curtis/s20_min10000_Baseline_ASV_table_Silva_v138_1_pcoa/ordination.csv", "../starting_files/Baseline_Metadata - Baseline_Metadata.tsv", "Baseline bc", Genotype,genotype_cols)+
+  theme(legend.background = element_rect(fill="lightblue", size=0.5, linetype="solid")) +
+  theme(plot.title = element_text(hjust = 0.5))+
+  stat_ellipse()
+baseline_bc
+
+baseline_bc_by_Line<- generate_cs_pcoA_plots("bray_curtis/s20_min10000_Baseline_ASV_table_Silva_v138_1_pcoa/ordination.csv", "../starting_files/Baseline_Metadata - Baseline_Metadata.tsv", "Baseline bc", Genotype,genotype_cols)+
+  theme(legend.background = element_rect(fill="lightblue", size=0.5, linetype="solid")) +
+  theme(plot.title = element_text(hjust = 0.5))+
+  stat_ellipse()+
+  facet_wrap(~Line)
+baseline_bc_by_Line
+
+baseline_bc_by_Sex<- generate_cs_pcoA_plots("bray_curtis/s20_min10000_Baseline_ASV_table_Silva_v138_1_pcoa/ordination.csv", "../starting_files/Baseline_Metadata - Baseline_Metadata.tsv", "Baseline bc", Genotype,genotype_cols)+
+  theme(legend.background = element_rect(fill="lightblue", size=0.5, linetype="solid")) +
+  theme(plot.title = element_text(hjust = 0.5))+
+  stat_ellipse()+
+  facet_wrap(~Sex)
+baseline_bc_by_Sex
+
+plot_grid(baseline_bc, baseline_bc_by_Line, baseline_bc_by_Sex, labels=c("A","B", "C"))
+
 ### Beta - Diversity Stats ---
 
 ## RPCA --
@@ -103,4 +125,25 @@ data.adonis=adonis(data.dist ~Line+ Sex+ Genotype, data=metadata, permutations=1
 data.adonis$aov.tab
 
 data.adonis=adonis(data.dist ~ Line + Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+## RPCA --
+metadata <-read.delim("../starting_files/Baseline_Metadata - Baseline_Metadata.tsv",sep="\t",header=TRUE, row.names=1) #mapping file
+write.csv(metadata, "../starting_files/Baseline_Metadata.csv")
+
+data.dist<-read.table(file= "bray_curtis/export_s20_min10000_Baseline_ASV_table_Silva_v138_1_DM/distance-matrix.tsv")
+metadata <- read.csv("../starting_files/Baseline_Metadata.csv", header=TRUE, row.names=1)
+
+target <- row.names(data.dist)
+metadata = metadata[match(target, row.names(metadata)),]
+target == row.names(metadata)
+data.dist <- as.dist(as(data.dist, "matrix"))
+
+data.adonis=adonis(data.dist ~Line+ Sex+ Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Line + Sex*Genotype, data=metadata, permutations=10000)
+data.adonis$aov.tab
+
+data.adonis=adonis(data.dist ~ Sex*Line + Genotype, data=metadata, permutations=10000)
 data.adonis$aov.tab
