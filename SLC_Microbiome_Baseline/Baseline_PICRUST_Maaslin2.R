@@ -82,7 +82,7 @@ y = tapply(res_plot$coef, res_plot$description, function(y) mean(y))  # orders t
 y = sort(y, FALSE)   #switch to TRUE to reverse direction
 res_plot$description= factor(as.character(res_plot$description), levels = names(y))
 
-cols <- viridis::inferno(2)
+cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
 baseline_ec_het <- res_plot %>%
   arrange(coef) %>%
   filter(qval < 0.10, abs(coef) > 0) %>%
@@ -118,81 +118,7 @@ y = tapply(res_plot$coef, res_plot$description, function(y) mean(y))  # orders t
 y = sort(y, FALSE)   #switch to TRUE to reverse direction
 res_plot$description= factor(as.character(res_plot$description), levels = names(y))
 
-cols <- viridis::inferno(2)
-baseline_ec_mut <- res_plot %>%
-  arrange(coef) %>%
-  filter(qval < 0.10, abs(coef) > 0) %>%
-  ggplot2::ggplot(aes(coef, description, fill = site)) +
-  geom_bar(stat = "identity") +
-  cowplot::theme_cowplot(16) +
-  theme(axis.text.y = element_text(face = "bold")) +
-  scale_fill_manual(values = cols) +
-  labs(x = "Effect size (MUT/WT)",
-       y = "",
-       fill = "") +
-  theme(legend.position = "none")+
-  ggtitle("WT vs MUT: EC data") +
-  theme(plot.title = element_text(hjust = 0.5))
-baseline_ec_mut
-
-### Visualize Pathway results  ---
-
-# Baseline WT vs HET
-data<-read.table("ASV-level_SLC_Baseline_PWY_Maaslin2_Line_Sex_Genotype/significant_results.tsv", header=TRUE)
-data <- data %>% filter(qval <0.10)
-data <- data %>% filter(metadata=="Genotype")
-annotation <- read.delim("starting_files/picrust2_output_Baseline_ASV_table_Silva_v138_1.qza/export_ec_metagenome/annotated_EC.tsv", row.names=1)
-annotation$feature <- row.names(annotation)
-annotation <- annotation %>% select(c("feature","description"))
-annotation$feature <- gsub(":", ".", annotation$feature)
-data <- merge(data,annotation, by="feature")
-
-res_plot <- data %>% filter(value=="HET")
-res_plot <- unique(res_plot)
-res_plot <- res_plot %>%
-  mutate(site = ifelse(coef< 0, "WT", "HET"))
-
-y = tapply(res_plot$coef, res_plot$description, function(y) mean(y))  # orders the genera by the highest fold change of any ASV in the genus; can change max(y) to mean(y) if you want to order genera by the average log2 fold change
-y = sort(y, FALSE)   #switch to TRUE to reverse direction
-res_plot$description= factor(as.character(res_plot$description), levels = names(y))
-
-cols <- viridis::inferno(2)
-baseline_ec_het <- res_plot %>%
-  arrange(coef) %>%
-  filter(qval < 0.10, abs(coef) > 0) %>%
-  ggplot2::ggplot(aes(coef, description, fill = site)) +
-  geom_bar(stat = "identity") +
-  cowplot::theme_cowplot(16) +
-  theme(axis.text.y = element_text(face = "bold")) +
-  scale_fill_manual(values = cols) +
-  labs(x = "Effect size (HET/WT)",
-       y = "",
-       fill = "") +
-  theme(legend.position = "none")+
-  ggtitle("WT vs HET: EC data") +
-  theme(plot.title = element_text(hjust = 0.5))
-baseline_ec_het
-
-# Baseline WT vs MUT
-data<-read.table("ASV-level_SLC_Baseline_EC_Maaslin2_Line_Sex_Genotype/significant_results.tsv", header=TRUE)
-data <- data %>% filter(qval <0.10)
-data <- data %>% filter(metadata=="Genotype")
-annotation <- read.delim("starting_files/picrust2_output_Baseline_ASV_table_Silva_v138_1.qza/export_ec_metagenome/annotated_EC.tsv", row.names=1)
-annotation$feature <- row.names(annotation)
-annotation <- annotation %>% select(c("feature","description"))
-annotation$feature <- gsub(":", ".", annotation$feature)
-data <- merge(data,annotation, by="feature")
-
-res_plot <- data %>% filter(value=="MUT")
-res_plot <- unique(res_plot)
-res_plot <- res_plot %>%
-  mutate(site = ifelse(coef< 0, "WT", "MUT"))
-
-y = tapply(res_plot$coef, res_plot$description, function(y) mean(y))  # orders the genera by the highest fold change of any ASV in the genus; can change max(y) to mean(y) if you want to order genera by the average log2 fold change
-y = sort(y, FALSE)   #switch to TRUE to reverse direction
-res_plot$description= factor(as.character(res_plot$description), levels = names(y))
-
-cols <- viridis::inferno(2)
+cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
 baseline_ec_mut <- res_plot %>%
   arrange(coef) %>%
   filter(qval < 0.10, abs(coef) > 0) %>%
@@ -210,4 +136,81 @@ baseline_ec_mut <- res_plot %>%
 baseline_ec_mut
 
 plot_grid(baseline_ec_het, baseline_ec_mut, labels = c("A", "B"))
+### Visualize Pathway results  ---
+
+# Baseline WT vs HET
+data<-read.table("ASV-level_SLC_Baseline_PWY_Maaslin2_Line_Sex_Genotype/significant_results.tsv", header=TRUE)
+data <- data %>% filter(qval <0.20)
+data <- data %>% filter(metadata=="Genotype")
+annotation <- read.delim("starting_files/picrust2_output_Baseline_ASV_table_Silva_v138_1.qza/export_pathway_abundance/annotated_pwy.tsv", row.names=1)
+annotation$feature <- row.names(annotation)
+annotation <- annotation %>% select(c("feature","description"))
+annotation$feature <- gsub("-", ".", annotation$feature)
+data <- merge(data,annotation, by="feature")
+
+res_plot <- data %>% filter(value=="HET") 
+res_plot <- unique(res_plot)
+res_plot <- res_plot %>%
+  mutate(site = ifelse(coef< 0, "WT", "HET"))
+
+y = tapply(res_plot$coef, res_plot$description, function(y) mean(y))  # orders the genera by the highest fold change of any ASV in the genus; can change max(y) to mean(y) if you want to order genera by the average log2 fold change
+y = sort(y, FALSE)   #switch to TRUE to reverse direction
+res_plot$description= factor(as.character(res_plot$description), levels = names(y))
+
+cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
+baseline_pwy_het <- res_plot %>%
+  arrange(coef) %>%
+  filter(qval < 0.20, abs(coef) > 0) %>%
+  ggplot2::ggplot(aes(coef, description, fill = site)) +
+  geom_bar(stat = "identity") +
+  cowplot::theme_cowplot(16) +
+  theme(axis.text.y = element_text(face = "bold")) +
+  scale_fill_manual(values = cols) +
+  labs(x = "Effect size (HET/WT)",
+       y = "",
+       fill = "") +
+  theme(legend.position = "none")+
+  ggtitle("WT vs HET: MetaCyc data") +
+  theme(plot.title = element_text(hjust = 0.5))
+baseline_pwy_het
+
+
+# Baseline WT vs MUT
+data<-read.table("ASV-level_SLC_Baseline_PWY_Maaslin2_Line_Sex_Genotype/significant_results.tsv", header=TRUE)
+data <- data %>% filter(qval <0.20)
+data <- data %>% filter(metadata=="Genotype")
+annotation <- read.delim("starting_files/picrust2_output_Baseline_ASV_table_Silva_v138_1.qza/export_pathway_abundance/annotated_pwy.tsv", row.names=1)
+annotation$feature <- row.names(annotation)
+annotation <- annotation %>% select(c("feature","description"))
+annotation$feature <- gsub("-", ".", annotation$feature)
+
+data <- merge(data,annotation, by="feature")
+
+res_plot <- data %>% filter(value=="MUT")
+res_plot <- unique(res_plot)
+res_plot <- res_plot %>%
+  mutate(site = ifelse(coef< 0, "WT", "MUT"))
+
+y = tapply(res_plot$coef, res_plot$description, function(y) mean(y))  # orders the genera by the highest fold change of any ASV in the genus; can change max(y) to mean(y) if you want to order genera by the average log2 fold change
+y = sort(y, FALSE)   #switch to TRUE to reverse direction
+res_plot$description= factor(as.character(res_plot$description), levels = names(y))
+
+cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
+baseline_pwy_mut <- res_plot %>%
+  arrange(coef) %>%
+  filter(qval < 0.20, abs(coef) > 0) %>%
+  ggplot2::ggplot(aes(coef, description, fill = site)) +
+  geom_bar(stat = "identity") +
+  cowplot::theme_cowplot(16) +
+  theme(axis.text.y = element_text(face = "bold")) +
+  scale_fill_manual(values = cols) +
+  labs(x = "Effect size (MUT/WT)",
+       y = "",
+       fill = "") +
+  theme(legend.position = "none")+
+  ggtitle("WT vs MUT: MetaCyc data") +
+  theme(plot.title = element_text(hjust = 0.5))
+baseline_pwy_mut
+
+plot_grid(baseline_pwy_het, baseline_pwy_mut, labels = c("C", "D"))
 
