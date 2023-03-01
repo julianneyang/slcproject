@@ -74,7 +74,7 @@ pwy_mut <- res_plot %>%
        y = "",
        fill = "") +
   theme(legend.position = "none")+
-  ggtitle("Luminal Colon: WT vs MUT: EC data") +
+  ggtitle("Luminal Colon: WT vs MUT: PWY data") +
   theme(plot.title = element_text(hjust = 0.5))
 pwy_mut
 
@@ -113,9 +113,9 @@ pwy_het <- res_plot %>%
        y = "",
        fill = "") +
   theme(legend.position = "none")+
-  ggtitle("Luminal Colon: WT vs HET: EC data") +
+  ggtitle("Luminal Colon: WT vs HET: PWY data") +
   theme(plot.title = element_text(hjust = 0.5))
 pwy_het
 
 # Save plot
-ggsave("SLC_Microbiome_Trios_PWY_Luminal_Colon_WTvsHET.png", pwy_mut, width = 12.6, height = 9)
+ggsave("SLC_Microbiome_Trios_PWY_Luminal_Colon_WTvsHET.png", pwy_het, width = 12.6, height = 9)
