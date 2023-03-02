@@ -43,7 +43,7 @@ fit_data = Maaslin2(input_data=df_input_data,
 
 ### Visualize EC results
 
-# Baseline WT vs MUT - none in HET
+# WT vs MUT - none in HET
 data<-read.table("PICRUST2_EC_Luminal_Colon_Maaslin2_Sex_Genotype_Sequencing_Run/significant_results.tsv", header=TRUE)
 data <- data %>% filter(qval <0.25)
 data <- data %>% filter(metadata=="Genotype")
