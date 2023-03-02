@@ -43,15 +43,16 @@ fit_data = Maaslin2(input_data=df_input_data,
 
 ### Visualize EC results
 
-# Baseline WT vs MUT - no HET effect
+# Baseline WT vs MUT - none in HET
 data<-read.table("PICRUST2_EC_Luminal_Colon_Maaslin2_Sex_Genotype_Sequencing_Run/significant_results.tsv", header=TRUE)
-data <- data %>% filter(qval <0.10)
+data <- data %>% filter(qval <0.25)
 data <- data %>% filter(metadata=="Genotype")
 annotation <- read.delim("annotated_EC.tsv", row.names=1)
 annotation$feature <- row.names(annotation)
 annotation <- annotation %>% select(c("feature","description"))
 annotation$feature <- gsub(":", ".", annotation$feature)
 data <- merge(data,annotation, by="feature")
+write.csv(data, "annotated_significant_EC_results.tsv")
 
 res_plot <- data %>% filter(value=="MUT")
 res_plot <- unique(res_plot)
@@ -65,7 +66,7 @@ res_plot$description= factor(as.character(res_plot$description), levels = names(
 cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
 ec_mut <- res_plot %>%
   arrange(coef) %>%
-  filter(qval < 0.10, abs(coef) > 0) %>%
+  filter(qval < 0.25, abs(coef) > 1) %>%
   ggplot2::ggplot(aes(coef, description, fill = site)) +
   geom_bar(stat = "identity") +
   cowplot::theme_cowplot(16) +
@@ -80,4 +81,4 @@ ec_mut <- res_plot %>%
 ec_mut
 
 # Save plot
-ggsave("SLC_Microbiome_Trios_EC_Luminal_Colon_WTvsMUT.png", ec_mut, width = 12.6, height = 9)
+ggsave("SLC_Microbiome_Trios_EC_Luminal_Colon_WTvsMUT_q0.25_c1.png", ec_mut, width = 12.6, height = 9)
