@@ -42,15 +42,16 @@ fit_data = Maaslin2(input_data=df_input_data,
 
 ### Visualize MetaCyc results
 
-## Baseline WT vs MUT
+## WT vs MUT
 data<-read.table("PICRUST2_PWY_Luminal_Colon_Maaslin2_Sex_Genotype_Sequencing_Run/significant_results.tsv", header=TRUE)
-data <- data %>% filter(qval <0.10)
+data <- data %>% filter(qval <0.1)
 data <- data %>% filter(metadata=="Genotype")
 annotation <- read.delim("annotated_pwy.tsv", row.names=1)
 annotation$feature <- row.names(annotation)
 annotation <- annotation %>% select(c("feature","description"))
 annotation$feature <- gsub("-", ".", annotation$feature)
 data <- merge(data,annotation, by="feature")
+write.csv(data, "annotated_significant_results_pwy.tsv")
 
 res_plot <- data %>% filter(value=="MUT")
 res_plot <- unique(res_plot)
@@ -64,7 +65,7 @@ res_plot$description= factor(as.character(res_plot$description), levels = names(
 cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
 pwy_mut <- res_plot %>%
   arrange(coef) %>%
-  filter(qval < 0.10, abs(coef) > 0) %>%
+  filter(qval < 0.1, abs(coef) > 0) %>%
   ggplot2::ggplot(aes(coef, description, fill = site)) +
   geom_bar(stat = "identity") +
   cowplot::theme_cowplot(16) +
@@ -79,9 +80,9 @@ pwy_mut <- res_plot %>%
 pwy_mut
 
 # Save plot
-ggsave("SLC_Microbiome_Trios_PWY_Luminal_Colon_WTvsMUT.png", pwy_mut, width = 12.6, height = 9)
+ggsave("SLC_Microbiome_Trios_PWY_Luminal_Colon_WTvsMUT_q0.25_c1.png", pwy_mut, width = 12.6, height = 9)
 
-## Baseline WT vs HET
+## WT vs HET
 data<-read.table("PICRUST2_PWY_Luminal_Colon_Maaslin2_Sex_Genotype_Sequencing_Run/significant_results.tsv", header=TRUE)
 data <- data %>% filter(qval <0.10)
 data <- data %>% filter(metadata=="Genotype")
