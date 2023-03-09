@@ -28,30 +28,32 @@ target == row.names(input_metadata)
 df_input_metadata<-input_metadata
 df_input_metadata$MouseID <- factor(df_input_metadata$MouseID)
 df_input_metadata$Genotype <- factor(df_input_metadata$Genotype, levels=c("WT","HET", "MUT"))
+df_input_metadata$Site <- factor(df_input_metadata$Site, levels=c("Distal_Colon","Proximal_Colon", "Cecum"))
 df_input_metadata$Sex <- factor(df_input_metadata$Sex)
 sapply(df_input_metadata,levels)
 
 fit_data = Maaslin2(input_data=df_input_data, 
                     input_metadata=df_input_metadata, 
-                    output = paste0("PICRUST2_PWY_Luminal_Colon_Maaslin2_Sex_Genotype_Sequencing_Run"), 
-                    fixed_effects = c("Sex", "Genotype", "Sequencing_Run"), normalization = "TSS", 
+                    output = paste0("PICRUST2_PWY_Luminal_Colon_Maaslin2_Sex_Sequencing_Run_Site_Genotype"), 
+                    fixed_effects = c("Sex", "Sequencing_Run", "Site", "Genotype"), normalization = "TSS", 
                     random_effects = "MouseID",
-                    reference = "Genotype,WT", 
+                    reference = c("Genotype,WT", "Site,Distal_Colon"),
                     min_prevalence = 0.15,
                     transform ="log",plot_heatmap = FALSE,plot_scatter = FALSE)
 
-### Visualize MetaCyc results
+### Visualize PWY results
+setwd("/Users/rochellelai/Box Sync/JacobsLab/slcproject/SLC_Microbiome_Trios_RL/Pathway/PICRUST2_PWY_Luminal_Colon_Maaslin2_Sex_Sequencing_Run_Site_Genotype")
 
-## WT vs MUT
-data<-read.table("PICRUST2_PWY_Luminal_Colon_Maaslin2_Sex_Genotype_Sequencing_Run/significant_results.tsv", header=TRUE)
+## WT vs MUT - no HET
+data<-read.table("significant_results.tsv", header=TRUE)
 data <- data %>% filter(qval <0.1)
 data <- data %>% filter(metadata=="Genotype")
-annotation <- read.delim("annotated_pwy.tsv", row.names=1)
+annotation <- read.delim("/Users/rochellelai/Box Sync/JacobsLab/slcproject/SLC_Microbiome_Trios_RL/Pathway/annotated_pwy.tsv", row.names=1)
 annotation$feature <- row.names(annotation)
 annotation <- annotation %>% select(c("feature","description"))
 annotation$feature <- gsub("-", ".", annotation$feature)
 data <- merge(data,annotation, by="feature")
-write.csv(data, "annotated_significant_results_pwy.tsv")
+write.csv(data, "annotated_significant_results_pwy_q0.25.tsv")
 
 res_plot <- data %>% filter(value=="MUT")
 res_plot <- unique(res_plot)
@@ -65,7 +67,7 @@ res_plot$description= factor(as.character(res_plot$description), levels = names(
 cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
 pwy_mut <- res_plot %>%
   arrange(coef) %>%
-  filter(qval < 0.1, abs(coef) > 0) %>%
+  filter(qval < 0.1, abs(coef) > 1) %>%
   ggplot2::ggplot(aes(coef, description, fill = site)) +
   geom_bar(stat = "identity") +
   cowplot::theme_cowplot(16) +
@@ -80,43 +82,4 @@ pwy_mut <- res_plot %>%
 pwy_mut
 
 # Save plot
-ggsave("SLC_Microbiome_Trios_PWY_Luminal_Colon_WTvsMUT_q0.25_c1.png", pwy_mut, width = 12.6, height = 9)
-
-## WT vs HET
-data<-read.table("PICRUST2_PWY_Luminal_Colon_Maaslin2_Sex_Genotype_Sequencing_Run/significant_results.tsv", header=TRUE)
-data <- data %>% filter(qval <0.10)
-data <- data %>% filter(metadata=="Genotype")
-annotation <- read.delim("annotated_pwy.tsv", row.names=1)
-annotation$feature <- row.names(annotation)
-annotation <- annotation %>% select(c("feature","description"))
-annotation$feature <- gsub("-", ".", annotation$feature)
-data <- merge(data,annotation, by="feature")
-
-res_plot <- data %>% filter(value=="HET")
-res_plot <- unique(res_plot)
-res_plot <- res_plot %>%
-  mutate(site = ifelse(coef< 0, "WT", "HET"))
-
-y = tapply(res_plot$coef, res_plot$description, function(y) mean(y))  # orders the genera by the highest fold change of any ASV in the genus; can change max(y) to mean(y) if you want to order genera by the average log2 fold change
-y = sort(y, FALSE)   #switch to TRUE to reverse direction
-res_plot$description= factor(as.character(res_plot$description), levels = names(y))
-
-cols <- c("WT"="black", "HET"="blue", "MUT"="firebrick")
-pwy_het <- res_plot %>%
-  arrange(coef) %>%
-  filter(qval < 0.10, abs(coef) > 0) %>%
-  ggplot2::ggplot(aes(coef, description, fill = site)) +
-  geom_bar(stat = "identity") +
-  cowplot::theme_cowplot(16) +
-  theme(axis.text.y = element_text(face = "bold")) +
-  scale_fill_manual(values = cols) +
-  labs(x = "Effect size (HET/WT)",
-       y = "",
-       fill = "") +
-  theme(legend.position = "none")+
-  ggtitle("Luminal Colon: WT vs HET: PWY data") +
-  theme(plot.title = element_text(hjust = 0.5))
-pwy_het
-
-# Save plot
-ggsave("SLC_Microbiome_Trios_PWY_Luminal_Colon_WTvsHET.png", pwy_het, width = 12.6, height = 9)
+ggsave("SLC_Microbiome_Trios_PWY_Luminal_Colon_WTvsMUT_q0.1_c0.png", pwy_mut, width = 12.6, height = 9)
