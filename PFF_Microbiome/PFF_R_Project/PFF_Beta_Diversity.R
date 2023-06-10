@@ -6,9 +6,23 @@ library(cowplot)
 library(viridis)
 library(Microbiome.Biogeography)
 
-setwd("C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/PFF_Microbiome/beta_diversity/")
+metadata <- read.table("../starting_files/PFF_Mapping.tsv",header=TRUE)
+counts <- read.table("../starting_files/PFF_ASV_table_Silva_v138_1.tsv", header = TRUE, row.names=1)
 
-here::i_am("Biotin_Deficiency_RProj/UCI_Beta_Diversity.R")
+## Store taxonomy in an annotation file --
+annotation <- tibble::rownames_to_column(counts, "feature") %>% select(c("feature", "taxonomy"))
+counts <- counts %>% select(-c("taxonomy"))
+
+## Apply minimum sequencing depth threshold --
+counts <- counts[colSums(counts) >= 10000]
+
+## Split counts into colon subsets -- 
+
+# Luminal Colon 
+lumcol_meta <- metadata %>% filter(Study=="Luminal_Colon", SampleID %in% names(counts))
+row.names(lumcol_meta) <- lumcol_meta$SampleID
+lumcol <- lumcol_meta$SampleID
+lumcol_counts <- counts %>% select(all_of(lumcol))
 
 generate_longitudinal_pcoA_plots <- function(ordination_file, metadata, title, colorvariable,colorvector){
   data<-read.csv(ordination_file, header=FALSE)
