@@ -30,9 +30,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "b1f4ae144134f999",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.1.16"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -159,7 +169,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "490b1175579084f2",
+  "active": "b1f4ae144134f999",
   "lastOpenFiles": [
     "Beta diversity - RPCA.md"
   ]

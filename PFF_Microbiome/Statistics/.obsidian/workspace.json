@@ -30,9 +30,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "28f17fedbc772fd3",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.1.16"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -159,7 +169,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4a0ca1c2f7476786",
+  "active": "28f17fedbc772fd3",
   "lastOpenFiles": [
     "Beta Diversity - RPCA.md",
     "Beta Diversity - Bray Curtis.md"
