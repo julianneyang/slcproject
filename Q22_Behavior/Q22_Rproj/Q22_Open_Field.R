@@ -39,6 +39,22 @@ centertime
 
 plot_grid(distance, centertime, labels=c("A","B"))
 
+## Open Field on full dataset by SLC Genotype--
+distance <-generate_boxplots(data, SLC_Genotype, Distance,-30,85) +
+  ggtitle("Distance in Open Field")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(x="", y="Distance (cm)")+
+  facet_wrap(~Q22)
+distance
+
+centertime <-generate_boxplots(data, SLC_Genotype, Center_Time,-30,85) +
+  ggtitle("Center Time")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(x="", y="Time (s)")+
+  facet_wrap(~Q22)
+centertime
+
+plot_grid(distance, centertime, labels=c("A","B"))
 
 ## Startle PPI on only SLC WT mice
 data_slcwt <- data %>% filter(SLC_Genotype=="WT")
@@ -54,7 +70,10 @@ centertime_slcwt <-generate_boxplots(data_slcwt, Q22, Center_Time,-30,85) +
   labs(x="", y="Time (s)")
 centertime_slcwt
 
-plot_grid(distance_slcwt, centertime_slcwt, labels=c("A","B"))
+plot_grid(distance_slcwt, centertime_slcwt, 
+          olm_slcwt_training,olm_slcwt,
+          labels=c("A","B","C","D"),
+          nrow=2)
 
 ## Stratified by SLC Genotype --
 b<-generate_boxplots(data, SLC_Genotype, Total_Time,0,51)+

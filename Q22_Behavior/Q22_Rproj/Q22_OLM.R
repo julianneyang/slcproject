@@ -25,19 +25,63 @@ generate_boxplots <- function(input_data, X, Y, min,max){
 }
 
 ## Open Field on full dataset --
-distance <-generate_boxplots(data, Q22, Distance,-30,85) +
-  ggtitle("Distance in Open Field")+
+data_testing <- data %>% filter(Day=="Testing")
+olm <-generate_boxplots(data_testing, Q22, Discrimination_Ratio,-30,85) +
+  ggtitle("Testing")+
   theme(plot.title = element_text(hjust = 0.5)) +
-  labs(x="", y="Distance (cm)")
-distance
+  labs(x="", y="Discrimination Ratio")
+olm
 
-centertime <-generate_boxplots(data, Q22, Center_Time,-30,85) +
-  ggtitle("Center Time")+
+data_training <- data %>% filter(Day=="Training")
+olm_training <-generate_boxplots(data_training, Q22, Discrimination_Ratio,-30,85) +
+  ggtitle("Training")+
   theme(plot.title = element_text(hjust = 0.5)) +
-  labs(x="", y="Time (s)")
-centertime
+  labs(x="", y="Discrimination Ratio")
+olm_training
 
-plot_grid(distance, centertime, labels=c("A","B"))
+olm_long <- ggplot(data=data,aes(x=Day,y=Discrimination_Ratio, fill=Q22))+ 
+  scale_fill_viridis_d() +
+  geom_boxplot(alpha=0.25)+
+  geom_point(aes(group = Animal)) + 
+  geom_line(aes(group = Animal,color=Q22),size=1)+
+  theme_cowplot(12)+
+  facet_wrap(~Q22)
+
+plot_grid(olm_training,olm,
+          olm_long, labels=c("A","B","C"),
+          ncol=2, nrow = 2,
+          rel_widths = as.numeric(0.5,0.5,1)) 
+
+## Open Field on full dataset by SLC Genotype--
+data_testing <- data %>% filter(Day=="Testing")
+olm <-generate_boxplots(data_testing, SLC_Genotype, Discrimination_Ratio,-30,85) +
+  ggtitle("Testing")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(x="", y="Discrimination Ratio")+
+  facet_wrap(~Q22)
+olm
+
+data_training <- data %>% filter(Day=="Training")
+olm_training <-generate_boxplots(data_training, SLC_Genotype, Discrimination_Ratio,-30,85) +
+  ggtitle("Training")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(x="", y="Discrimination Ratio")+
+  facet_wrap(~Q22)
+olm_training
+
+olm_long <- ggplot(data=data,aes(x=Day,y=Discrimination_Ratio, fill=SLC_Genotype))+ 
+  scale_fill_viridis_d() +
+  geom_boxplot(alpha=0.25)+
+  geom_point(aes(group = Animal)) + 
+  geom_line(aes(group = Animal,color=SLC_Genotype),size=1)+
+  theme_cowplot(12)+
+  facet_wrap(~Q22)
+olm_long
+
+plot_grid(olm_training,olm,
+          olm_long, labels=c("A","B","C"),
+          ncol=2, nrow = 2,
+          rel_widths = as.numeric(0.5,0.5,1)) 
 
 
 ## Startle PPI on only SLC WT mice
@@ -68,6 +112,7 @@ plot_grid(olm_slcwt_training,olm_slcwt,
           olm_long_slcwt, labels=c("A","B","C"),
           ncol=2, nrow = 2,
           rel_widths = as.numeric(0.5,0.5,1)) 
+
 ## Stratified by SLC Genotype --
 b<-generate_boxplots(data, SLC_Genotype, Total_Time,0,51)+
   facet_wrap(~Q22)
