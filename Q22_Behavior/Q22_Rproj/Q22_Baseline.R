@@ -1,7 +1,7 @@
 
 library(dada2)
 
-path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Raw_Data_March2022SeqRun/Baseline/" # CHANGE to the directory containing the fastq files
+path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Raw_Data_March2022SeqRun/Q22_FastQ/" # CHANGE to the directory containing the fastq files
 list.files(path)
 
 # Extract sample names, identify forward and reverse reads
@@ -71,8 +71,8 @@ head(taxa.print)
 taxa[is.na(taxa)] <- ""
 taxonomy<-paste("k__",taxa[,1],"; ","p__",taxa[,2],"; ","c__",taxa[,3],"; ","o__",taxa[,4],"; ","f__",taxa[,5],"; ","g__",taxa[,6],"; ","s__",taxa[,7],sep="")
 output<-cbind(t(seqtab.nochim), taxonomy)
-uniquesToFasta(seqtab.nochim, fout='C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/starting_files/rep-seqs.fna', ids=colnames(seqtab.nochim))
-write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/starting_files/Baseline_ASV_table_Silva_v138_1.tsv", sep="\t", col.names=NA)
+uniquesToFasta(seqtab.nochim, fout='C:/Users/Jacobs Laboratory/Documents/JCYang/slcproject/Q22_Microbiome/starting_files/rep_seqs.fna', ids=colnames(seqtab.nochim))
+write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/slcproject/Q22_Microbiome/starting_files/Q22_ASV_table_Silva_v138_1.tsv", sep="\t", col.names=NA)
 
 # Need to modify .txt file by typing "#OTU" in the upper left box, can then import into QIIME
 
