@@ -75,15 +75,6 @@ plot_grid(distance_slcwt, centertime_slcwt,
           labels=c("A","B","C","D"),
           nrow=2)
 
-## Stratified by SLC Genotype --
-b<-generate_boxplots(data, SLC_Genotype, Total_Time,0,51)+
-  facet_wrap(~Q22)
-b
-
-# Stratified by SLC Genotype and Sex 
-e<-generate_boxplots(data, SLC_Genotype, Total_Time,0,51)+
-  facet_wrap(Sex~ASO_Tg)
-e
 
 ## Parametric Stats for SLC WT only --
 lm1 <- lm(Distance ~ Sex+ Q22, data = data_slcwt)

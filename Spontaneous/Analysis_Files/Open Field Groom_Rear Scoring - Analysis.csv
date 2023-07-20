@@ -1,0 +1,43 @@
+MouseID,Score,Video,Value ,Video_Start,Video_End,Notes,Rear instances,Groom instances,Scorer,Genotype,Sex,Line
+908,1,C3V1,rrggrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrgggrrrrrrrrrr,0:04,10:04,,51,6,Jacob,HET,Male,Q22
+907,3,C3V1,rrrrrrrrrrrrrrgrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrgrrrrrrrr,1:40,11:40,,53,3,Jacob,WT,Male,Q22
+951,4,C3V1,rrrrggrrrrrrrrrrrgggrrgrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrr,1:56,11:56,,48,7,Jacob,WT,Male,Q22
+952,1,C3V4,rrgrgrrrgrrrgrrgrrgrggrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrgrgrrrrrrrrrrrrgrgr,0:05,10:05,,58,13,Jacob,MUT,Male,Q22
+953,2,C3V4,rrrrrgrrrrgrrrrrrrrrrrrrrrrrrrrgrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrgrrrggrrrrrrrr,0:20,10:20,,77,8,Jacob,MUT,Male,Q22
+969,3,C3V4, grrggrrrgrrrrrrgrgrrrrrrrrgrrgrggrrgrrgrgrrrgrrrrrrrrrr,0:31,10:31,,41,14,Jacob,MUT,Male,Q22
+812,1,C2V1,rrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:22,10:22,,117,1,Allyson,WT,Female,Q22
+795,2,C2V1,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:45,10:45,,125,1,Allyson,WT,Female,Q22
+799,1,C2V2,rrrrrrrrrrrgrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:25,10:25,superexplorative first then got anxious when other mice joined,48,2,Allyson,HET,Female,Q22
+798,2,C2V2,rrrrrrrrgrrrrrrrrrrrrrrrrrrrr ,0:54,10:54,,28,1,Allyson,HET,Female,Q22
+797,4,C2V2,rrrgrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,1:16,11:16,,110,2,Allyson,HET,Female,Q22
+851,1,C2V3,rrrrrgrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:03,10:04,,82,2,Allyson,HET,Male,Q22
+827,2,C2V3,rrrrrrrrrrrrrrrrgrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:11,10:11,,109,2,Allyson,HET,Female,Q22
+869,1,C2V5,rrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:04,10:04,,95,1,Allyson,HET,Female,Q22
+803,2,C2V5,rrrrrrgrrrrrrrrrrrrrrrrrrrrrgrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:38,10:38,,79,3,Allyson,WT,Male,Q22
+909,2,C3V1,rrgrrrrrrrrggrrgrrrggrrrrrrrrrrr,0:10,10:10,,26,6,Jacob,HET,Male,Q22
+954,4,C3V4,rrrrrgrrrrggrrgrrrrrrrrrrrrrgrrrrrgrggrrrrrrrrrrrg,1:18,11:18,,41,9,Jacob,HET,Female,Q22
+905,1,C3V2,rrrrrrrrrrrggrrrrrrrrrrrrgrrrrrrrrrrgrrggrrrrrrrrrrrrrrrrrrrrrrrrgrrrrgrrrrrgrrgrrrrrrrrrrrrrrrrrrrrrrrrrr,0:04,10:04,,96,10,Jacob,MUT,Female,SLC
+906,2,C3V2,rrrrrrrrrrgrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrgggrrrrrrrrrrrrrrrrrrrrrrrrrr,0:11,10:11,,69,5,Jacob,MUT,Female,SLC
+904,1,C3V3,rrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrr,0:07,10:07,,53,2,Jacob,WT,Female,SLC
+972,2,C3V3,rrrrrrrrrrrrrgrggrrrrgrrrrrrggrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:12,10:12,,61,7,Jacob,WT,Female,SLC
+973,3,C3V3,rrrrrrrrrrrrgrrrrrrrgrrrrrrrrgrgrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:56,10:56,,100,5,Jacob,MUT,Female,SLC
+974,4,C3V3, rrrrrrrrrrrrrrrrrrrggrrrrrrrrrrrrrrrrrrrrgrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:42,10:42,,79,4,Jacob,MUT,Female,SLC
+975,1,C3V5,rrrrrrrrrgggrgrrrrrrrrrrrgggrrrrrrrrgrrrrrrrrrrrrr,0:07,10:07,,42,8,Jacob,HET,Female,SLC
+902,2,C3V5,rrgrggrrrgrrrrgrrggrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrgggrrrrrrrrr,1:25,11:25,,55,11,Jacob,WT,Male,SLC
+901,3,C3V5,rrrrrrrrrrrrgrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrr,2:35,12:35,,45,2,Jacob,MUT,Male,SLC
+903,4,C3V5,rrrrrrrrrrrrrggrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrr,3:40,13:40,,81,3,Jacob,HET,Male,SLC
+755,1,C1V1,rrrrgrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrr,0:10,10:10,,81,3,Allyson,HET,Male,SLC
+778,2,C1V1,rrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrr,0:18,10:18,,58,2,Allyson,HET,Male,SLC
+780,3,C1V1,rrrrrrrgrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrgrrrrrrrrrrrrrrrrrrrrrrrrrr,0:46,10:46,,73,4,Allyson,HET,Male,SLC
+779,4,C1V1,rgrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,1:12,11:12,,40,2,Allyson,HET,Male,SLC
+777,1,C1V2,rrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:09,10:09,,89,2,Allyson,WT,Male,SLC
+756,2,C1V2,rgrrgrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrg,0:15,10:15,,68,4,Allyson,WT,Male,SLC
+754,3,C1V2,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:29,10:29,,110,2,Allyson,WT,Male,SLC
+809,4,C1V2,rrrrrrrgrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:40,10:40,,58,2,Allyson,WT,Male,SLC
+805,1,C1V3,rgrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrggrrrrrrrrrr,0:06,10:06,,54,4,Allyson,MUT,Female,SLC
+810,2,C1V3,rrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrr,0:11,10:11,,110,3,Allyson,HET,Male,SLC
+808,3,C1V3,rrrrrrgrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:15,10:15,,86,2,Allyson,WT,Female,SLC
+879,3,C2V1,grrrrrrgrrrrgrgg,0:51,10:51,just kinda laid there,11,5,Allyson,WT,Male,SLC
+880,4,C2V1,rrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,1:01,11:01,,85,1,Allyson,WT,Male,SLC
+877,3,C2V2,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,1:13,11:13,,82,1,Allyson,WT,Female,SLC
+878,3,C2V3,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrggrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:54,10:54,periods of hyperactivity and then depressoin,86,2,Allyson,MUT,Female,SLC
