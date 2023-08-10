@@ -8,14 +8,14 @@ library(ggbeeswarm)
 library(ggpubr)
 library(ggsignif)
 
-setwd("Desktop/JacobsLab/")
-data<-read.csv("SLC Spontaneous Weights - Sheet1.csv", header=TRUE)
+setwd("/Users/margaretblack/Desktop/JacobsLab/slcproject")
+data<-read.csv("SLC_Microbiota_Transfer/SMT Open Field Groom_Rear Scoring - Analysis.csv", header=TRUE)
 names(data)
 generate_boxplots <- function(input_data, X, Y, min,max){
   data<-as.data.frame(input_data)
   #Ensure correct ordering of levels 
-  data$Genotype <- factor(data$Genotype, levels = c("WT", "HET", "MUT"))
-  data$Sex <- factor(data$Sex, levels = c("Female","Male"))
+  data$Genotype <- factor(data$Genotype, levels = c("WT", "MUT"))
+  data$Sex <- factor(data$Sex, levels = c("F","M"))
   
   ggplot(data=data,aes(x={{X}},y={{Y}}, fill={{X}})) + 
     #geom_violin(alpha=0.25,position=position_dodge(width=.75),size=1,color="black",draw_quantiles=c(0.5))+
@@ -31,17 +31,23 @@ generate_boxplots <- function(input_data, X, Y, min,max){
 }
 
 ## lines that you need to modify ---
-generate_boxplots(data, Genotype, Weight..g., 0,40 ) + 
-  stat_compare_means(comparisons = list(c("WT", "HET"),
-                                        c("WT", "MUT"),
-                                        c("HET","MUT")),method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
+grooms <- data %>% filter(Behavior=="groom")
+grooms_plot <- generate_boxplots(grooms, Genotype, Instances, 0,90 ) + 
+  facet_grid(~Scorer) +
+  ggtitle("Grooms") +
+  theme(plot.title = element_text(hjust = 0.5)) 
+  stat_compare_means(comparisons = list(c("WT", "MUT")),method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
 
-generate_boxplots(data, Genotype, Weight..g., 0,40 ) + 
-  facet_grid(~Sex) +
-  stat_compare_means(comparisons = list(c("WT", "HET"),
-                                        c("WT", "MUT"),
-                                        c("HET","MUT")),method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
+rears <- data%>% filter (Behavior=="rear")  
+rears_plot <- generate_boxplots(rears, Genotype, Instances, 0,90 ) + 
+  facet_grid(~Scorer) +
+  ggtitle("Rears") +
+  theme(plot.title = element_text(hjust = 0.5))
+  stat_compare_means(comparisons = list(c("WT", "MUT")),method="wilcox", vjust=0.5,label="p.signif",step.increase=0.08, hide.ns = TRUE)
 
+plot_grid(rears_plot, grooms_plot)
+  
+  
 # Add parametric and non-parametric stats to README.md
 # WT vs MUT
 data <- data %>% filter(Genotype!="HET")
