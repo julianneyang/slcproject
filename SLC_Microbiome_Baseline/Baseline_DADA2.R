@@ -1,7 +1,8 @@
 
 library(dada2)
+remove.packages("Matrix")
 
-path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Raw_Data_March2022SeqRun/Baseline/" # CHANGE to the directory containing the fastq files
+path <- "C:/Users/Jacobs Laboratory/Documents/JCYang/Julianne" # CHANGE to the directory containing the fastq files
 list.files(path)
 
 # Extract sample names, identify forward and reverse reads
@@ -16,12 +17,13 @@ plotQualityProfile(fnRs[1:2])
 # Create filtered dataset
 filtFs <- file.path(path, "filtered", paste0(sample.names, "_F_filt.fastq.gz"))  # creates output filenames
 filtRs <- file.path(path, "filtered", paste0(sample.names, "_R_filt.fastq.gz"))  # creates output filenames
-out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,140), 
-              maxN=0, maxEE=c(5,5), truncQ=2, rm.phix=TRUE,
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(230,140), 
+              maxN=0, truncQ=2, rm.phix=TRUE,
               compress=TRUE, multithread=FALSE)  
 # maxEE controls the maximum number of expected errors (i.e. read quality), second number is for filtering of reverse reads
 out
 
+write.csv(out, file = 'C:/Users/Jacobs Laboratory/Documents/JCYang/slcproject/ASO/Microbiome/16S_quality_control.csv')
 # Generate model for errors in the sequencing run
 errF <- learnErrors(filtFs, multithread=TRUE)   # can adjust parameters nbases (default 100 million) to increase amount of sequence data used to assess errors
 #107679550 total bases in 391562 reads from 14 samples will be used for learning the error rates.
@@ -71,8 +73,8 @@ head(taxa.print)
 taxa[is.na(taxa)] <- ""
 taxonomy<-paste("k__",taxa[,1],"; ","p__",taxa[,2],"; ","c__",taxa[,3],"; ","o__",taxa[,4],"; ","f__",taxa[,5],"; ","g__",taxa[,6],"; ","s__",taxa[,7],sep="")
 output<-cbind(t(seqtab.nochim), taxonomy)
-uniquesToFasta(seqtab.nochim, fout='C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/starting_files/rep-seqs.fna', ids=colnames(seqtab.nochim))
-write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/starting_files/Baseline_ASV_table_Silva_v138_1.tsv", sep="\t", col.names=NA)
+uniquesToFasta(seqtab.nochim, fout='C:/Users/Jacobs Laboratory/Documents/JCYang/slcproject/ASO/Microbiome/ASO_rep_seqs.fna', ids=colnames(seqtab.nochim))
+write.table(output, "C:/Users/Jacobs Laboratory/Documents/JCYang/slcproject/ASO/Microbiome/ASO_ASV_table.tsv", sep="\t", col.names=NA)
 
 # Need to modify .txt file by typing "#OTU" in the upper left box, can then import into QIIME
 
@@ -107,4 +109,4 @@ ps
 #Exporting tree
 library(ape)
 tree1 = phy_tree(ps)
-ape::write.tree(tree1, "C:/Users/Jacobs Laboratory/Documents/JCYang/SLC_GitHub/slcproject/SLC_Microbiome_Baseline/SLC_Baseline_tree.tree")
+ape::write.tree(tree1, "C:/Users/Jacobs Laboratory/Documents/JCYang/slcproject/ASO/Microbiome/tree.tree")

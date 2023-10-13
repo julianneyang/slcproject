@@ -1,0 +1,43 @@
+MouseID,Score,Video,Value ,Video_Start,Video_End,Notes,Rear instances,Groom instances,Scorer,Genotype,Sex,Line
+908,1,C3V1,rrggrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrgggrrrrrrrrrr,0:04,10:04,,51,6,Jacob,HET,Male,Q22
+907,3,C3V1,rrrrrrrrrrrrrrgrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrgrrrrrrrr,1:40,11:40,,53,3,Jacob,WT,Male,Q22
+951,4,C3V1,rrrrggrrrrrrrrrrrgggrrgrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrr,1:56,11:56,,48,7,Jacob,WT,Male,Q22
+952,1,C3V4,rrgrgrrrgrrrgrrgrrgrggrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrgrgrrrrrrrrrrrrgrgr,0:05,10:05,,58,13,Jacob,MUT,Male,Q22
+953,2,C3V4,rrrrrgrrrrgrrrrrrrrrrrrrrrrrrrrgrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrgrrrggrrrrrrrr,0:20,10:20,,77,8,Jacob,MUT,Male,Q22
+969,3,C3V4, grrggrrrgrrrrrrgrgrrrrrrrrgrrgrggrrgrrgrgrrrgrrrrrrrrrr,0:31,10:31,,41,14,Jacob,MUT,Male,Q22
+909,2,C3V1,rrgrrrrrrrrggrrgrrrggrrrrrrrrrrr,0:10,10:10,,26,6,Jacob,HET,Male,Q22
+954,4,C3V4,rrrrrgrrrrggrrgrrrrrrrrrrrrrgrrrrrgrggrrrrrrrrrrrg,1:18,11:18,,41,9,Jacob,HET,Female,Q22
+905,1,C3V2,rrrrrrrrrrrggrrrrrrrrrrrrgrrrrrrrrrrgrrggrrrrrrrrrrrrrrrrrrrrrrrrgrrrrgrrrrrgrrgrrrrrrrrrrrrrrrrrrrrrrrrrr,0:04,10:04,,96,10,Jacob,MUT,Female,SLC
+906,2,C3V2,rrrrrrrrrrgrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrgggrrrrrrrrrrrrrrrrrrrrrrrrrr,0:11,10:11,,69,5,Jacob,MUT,Female,SLC
+904,1,C3V3,rrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrr,0:07,10:07,,53,2,Jacob,WT,Female,SLC
+972,2,C3V3,rrrrrrrrrrrrrgrggrrrrgrrrrrrggrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:12,10:12,,61,7,Jacob,WT,Female,SLC
+973,3,C3V3,rrrrrrrrrrrrgrrrrrrrgrrrrrrrrgrgrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:56,10:56,,100,5,Jacob,MUT,Female,SLC
+974,4,C3V3, rrrrrrrrrrrrrrrrrrrggrrrrrrrrrrrrrrrrrrrrgrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:42,10:42,,79,4,Jacob,MUT,Female,SLC
+975,1,C3V5,rrrrrrrrrgggrgrrrrrrrrrrrgggrrrrrrrrgrrrrrrrrrrrrr,0:07,10:07,,42,8,Jacob,HET,Female,SLC
+902,2,C3V5,rrgrggrrrgrrrrgrrggrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrgggrrrrrrrrr,1:25,11:25,,55,11,Jacob,WT,Male,SLC
+901,3,C3V5,rrrrrrrrrrrrgrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrr,2:35,12:35,,45,2,Jacob,MUT,Male,SLC
+903,4,C3V5,rrrrrrrrrrrrrggrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrr,3:40,13:40,,81,3,Jacob,HET,Male,SLC
+755,1,C1V1,rrrrgrrrrrrrrrrrrrrrrrrrgrrrggrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrgrrrr,0:11,10:11,,78,6,Jacob,HET,Male,SLC
+778,2,C1V1,rrrrrgrrrrrrgrrrrrrrrrgrrrrrrrrrrrrrrggrgrrrgrrrrrrrrrgrrrr,0:18,10:18,,51,8,Jacob,HET,Male,SLC
+780,3,C1V1,rrrrrrrrrrggrrrrrrrrrrrrrgrgrrrrrrrrrrrrrrrrrrrgrrrrrrrrrgrrrrgrgrrrrrrrrrrrrrrrrrrrr,0:46,10:46,,77,8,Jacob,HET,Male,SLC
+779,4,C1V1,rrgrgrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,1:13,11:13,,39,3,Jacob,HET,Male,SLC
+777,1,C1V2,rrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrgrrrrrgr,0:09,10:09,,93,5,Jacob,WT,Male,SLC
+754,2,C1V2,rggrrggrrrrrrrrrrrgrrggrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrg,0:14,10:14,,68,9,Jacob,WT,Male,SLC
+756,3,C1V2,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrgrrggrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrgrrrrrgrrrrrrrrrrrrrr,0:29,10:29,,116,7,Jacob,WT,Male,SLC
+809,4,C1V2,rrrrrrrgrrrrrrrrrgrrrrrrrrrrrrrrgrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrr,0:40,10:40,,70,5,Jacob,WT,Male,SLC
+805,1,C1V3,rggrrgggrrgrgrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrggrrgrrrrrr,0:06,10:06,,49,12,Jacob,MUT,Female,SLC
+808,2,C1V3,rrrrrrrrgrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrgrgrrrrrrrrrrrrrgrrrrrrr,0:15,10:15,,70,6,Jacob,WT,Female,SLC
+810,3,C1V3,rrrrrrrrrrrrrggrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrr,0:10,10:10,,82,4,Jacob,HET,Male,SLC
+879,1,C2V1,rrggrrrgrrrgrrgrgggg,0:50,10:50,,11,9,Jacob,WT,Male,SLC
+880,2,C2V1,rrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrgrr,1:01,11:01,,58,3,Jacob,WT,Male,SLC
+795,3,C2V1,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:45,10:45,,105,1,Jacob,WT,Female,Q22
+812,4,C2V1,rrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrggrrrrrrrrrrrrgrrrrrr,0:21,10:21,,85,5,Jacob,WT,Female,Q22
+877,1,C2V2,rrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrggrgrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,1:12,11:12,,80,5,Jacob,WT,Female,SLC
+799,2,C2V2,rrrrrrrrrgrrrrrgrrrrrrrrrrrrrrrrrrrrrr,0:24,10:24,,36,2,Jacob,HET,Female,Q22
+798,3,C2V2,rrrrrrrrrrrgrrrrgrrrrrgrrrrrrgr,0:54,10:54,,27,4,Jacob,HET,Female,Q22
+797,4,C2V2,rrrgrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,1:16,11:16,,108,2,Jacob,HET,Female,Q22
+827,1,C2V3,rrrrrrrrrrrrgrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:11,10:11,,85,3,Jacob,HET,Female,Q22
+851,3,C2V3,rrrggrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrr,0:04,10:04,,60,4,Jacob,HET,Male,Q22
+878,4,C2V3,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgggrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrr,0:54,10:54,,76,4,Jacob,MUT,Female,SLC
+869,1,C2V5,rrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:04,10:04,,89,2,Jacob,HET,Female,Q22
+803,4,C2V5,rrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr,0:38,10:38,,69,2,Jacob,WT,Male,Q22
